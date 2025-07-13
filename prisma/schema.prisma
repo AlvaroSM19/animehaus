@@ -1,0 +1,126 @@
+// Database schema with Prisma
+// This file will be updated once we set up the database
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Anime {
+  id          String      @id @default(cuid())
+  title       String
+  titleEnglish String?
+  studio      String
+  year        Int
+  genre       String[]
+  status      String      @default("completed")
+  episodes    Int?
+  rating      Float?
+  imageUrl    String?
+  description String?
+  characters  Character[]
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  @@map("animes")
+}
+
+model Character {
+  id          String   @id @default(cuid())
+  name        String
+  nameEnglish String?
+  anime       Anime    @relation(fields: [animeId], references: [id])
+  animeId     String
+  power       Int?
+  element     String?
+  team        String?
+  role        String   @default("other")
+  imageUrl    String?
+  abilities   String[]
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("characters")
+}
+
+model GameSession {
+  id         String   @id @default(cuid())
+  gameType   String
+  score      Int      @default(0)
+  duration   Int      @default(0) // in seconds
+  difficulty String   @default("medium")
+  completed  Boolean  @default(false)
+  data       Json?    // Store game-specific data
+  userId     String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@map("game_sessions")
+}
+
+model User {
+  id           String      @id @default(cuid())
+  username     String      @unique
+  email        String      @unique
+  passwordHash String?
+  provider     String?     @default("local")
+  providerId   String?
+  avatar       String?
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+  userStats    UserStats?
+  
+  @@map("users")
+}
+
+model UserStats {
+  id               String @id @default(cuid())
+  user             User   @relation(fields: [userId], references: [id])
+  userId           String @unique
+  totalGamesPlayed Int    @default(0)
+  totalScore       Int    @default(0)
+  favoriteGame     String?
+  bingoGamesPlayed Int    @default(0)
+  bingoHighScore   Int    @default(0)
+  gridGamesPlayed  Int    @default(0)
+  gridHighScore    Int    @default(0)
+  connGamesPlayed  Int    @default(0)
+  connHighScore    Int    @default(0)
+  pyraGamesPlayed  Int    @default(0)
+  pyraHighScore    Int    @default(0)
+  topGamesPlayed   Int    @default(0)
+  topHighScore     Int    @default(0)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@map("user_stats")
+}
+
+model Achievement {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  description String
+  icon        String
+  category    String
+  requirement Json     // Store achievement requirements
+  reward      Int      @default(0) // Points reward
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("achievements")
+}
+
+model UserAchievement {
+  id            String   @id @default(cuid())
+  userId        String
+  achievementId String
+  unlockedAt    DateTime @default(now())
+
+  @@unique([userId, achievementId])
+  @@map("user_achievements")
+}
