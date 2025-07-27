@@ -12,11 +12,9 @@ export default function Footer() {
   ];
 
   const games = [
-    { name: 'Bingo Anime', href: '/games/bingo' },
-    { name: 'Grid Trivia', href: '/games/grid-trivia' },
-    { name: 'Connections', href: '/games/connections' },
-    { name: 'Pyramid', href: '/games/pyramid' },
-    { name: 'Top 10', href: '/games/top-10' },
+    { name: 'Anime Impostor', href: '/games/impostor' },
+    { name: 'Cuadrícula Anime', href: '/games/anime-grid' },
+    { name: 'Anime Wordle', href: '/games/anime-wordle' },
   ];
 
   const socialLinks = [
@@ -33,17 +31,17 @@ export default function Footer() {
           {/* Brand Section */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <span className="text-2xl">🎌</span>
+              <span className="text-2xl">�</span>
               <span className="text-xl font-bold bg-gradient-to-r from-anime-sakura to-anime-gold bg-clip-text text-transparent">
-                AnimeQuiz Hub
+                AnimeHaus
               </span>
             </div>
             <p className="text-gray-400 text-sm">
-              La plataforma definitiva para mini-juegos y quizzes de anime. 
-              Desafía tu conocimiento y compite con otros otakus.
+              Tu casa del anime. Explora, juega y desafía tu conocimiento con mini-juegos 
+              únicos basados en One Piece.
             </p>
             <div className="text-xs text-gray-500">
-              © {currentYear} AnimeQuiz Hub. Todos los derechos reservados.
+              © {currentYear} AnimeHaus. Todos los derechos reservados.
             </div>
           </div>
 

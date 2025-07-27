@@ -5,134 +5,82 @@ import { Play, Clock, Users, Star } from 'lucide-react';
 
 const games = [
   {
-    id: 'bingo',
-    title: 'Bingo Anime',
-    description: 'Completa tu tablero con personajes, objetos y conceptos de tus animes favoritos. ¡El clásico juego de bingo pero con temática anime!',
-    emoji: '🎲',
-    difficulty: 'Fácil',
+    id: 'impostor',
+    title: 'Anime Impostor',
+    description: 'Encuentra el personaje que no pertenece al grupo temático. ¡Pon a prueba tu conocimiento de One Piece!',
+    emoji: '🕵️',
+    difficulty: 'Medio',
     estimatedTime: '5-10 min',
     maxPlayers: '1 jugador',
     rating: 4.8,
-    href: '/games/bingo',
-    color: 'from-pink-500 to-rose-500',
+    href: '/games/impostor',
+    color: 'from-purple-500 to-pink-500',
     features: [
-      'Tableros personalizables 4x4 y 5x5',
-      'Más de 200 elementos de anime',
-      'Sorteo aleatorio con animaciones',
-      'Validación automática de líneas',
-      'Múltiples series de anime populares'
+      'Interfaz circular intuitiva',
+      'Feedback inmediato',
+      'Múltiples categorías temáticas',
+      'Sistema de puntuación',
+      'Basado en One Piece'
     ],
     howToPlay: [
-      'Selecciona el tamaño de tu tablero',
-      'Espera el sorteo de elementos',
-      'Marca las casillas que coincidan',
-      '¡Consigue línea o bingo completo!'
+      'Observa los 5 personajes mostrados',
+      'Identifica el tema común',
+      'Encuentra el impostor',
+      '¡Gana puntos por respuestas correctas!'
     ],
     status: 'available'
   },
   {
-    id: 'grid-trivia',
-    title: 'Grid Trivia Anime',
-    description: 'Conecta elementos arrastrándolos a una grilla 3x3 basándote en atributos compartidos. ¡Pon a prueba tu conocimiento de relaciones anime!',
+    id: 'anime-grid',
+    title: 'Cuadrícula de Anime',
+    description: 'Completa la cuadrícula 3x3 con personajes que cumplan ambas condiciones de fila y columna.',
     emoji: '🎯',
-    difficulty: 'Medio',
-    estimatedTime: '10-15 min',
-    maxPlayers: '1 jugador',
-    rating: 4.6,
-    href: '/games/grid-trivia',
-    color: 'from-blue-500 to-cyan-500',
-    features: [
-      'Sistema de drag & drop intuitivo',
-      'Validación instantánea de respuestas',
-      'Múltiples categorías por serie',
-      'Pistas dinámicas disponibles',
-      'Feedback visual inmediato'
-    ],
-    howToPlay: [
-      'Observa la grilla 3x3 con criterios',
-      'Arrastra personajes a las casillas correctas',
-      'Busca atributos compartidos',
-      'Completa toda la grilla para ganar'
-    ],
-    status: 'coming-soon'
-  },
-  {
-    id: 'connections',
-    title: 'Connections Anime',
-    description: 'Encuentra las conexiones ocultas entre 16 elementos de anime. Agrupa elementos por temas, series o características en común.',
-    emoji: '🔗',
-    difficulty: 'Medio',
-    estimatedTime: '8-12 min',
-    maxPlayers: '1 jugador',
-    rating: 4.7,
-    href: '/games/connections',
-    color: 'from-green-500 to-emerald-500',
-    features: [
-      '16 elementos únicos por partida',
-      '4 grupos temáticos ocultos',
-      'Sistema de pistas progresivas',
-      'Temporizador opcional',
-      'Puntuación basada en velocidad'
-    ],
-    howToPlay: [
-      'Examina los 16 elementos mostrados',
-      'Selecciona 4 elementos relacionados',
-      'Confirma tu grupo y recibe feedback',
-      'Encuentra los 4 grupos para completar'
-    ],
-    status: 'coming-soon'
-  },
-  {
-    id: 'pyramid',
-    title: 'Pyramid Ranking',
-    description: 'Ordena personajes de anime en una pirámide de 4 niveles según poder, popularidad o criterios específicos. ¡Demuestra tu expertise!',
-    emoji: '⛰️',
     difficulty: 'Difícil',
     estimatedTime: '15-20 min',
     maxPlayers: '1 jugador',
-    rating: 4.5,
-    href: '/games/pyramid',
-    color: 'from-purple-500 to-violet-500',
+    rating: 4.7,
+    href: '/games/anime-grid',
+    color: 'from-blue-500 to-cyan-500',
     features: [
-      'Pirámide de 4 niveles (1-3-5-1)',
-      'Múltiples criterios de ordenamiento',
-      'Feedback en tiempo real',
-      'Sistema de desbloqueo progresivo',
-      'Comparación con rankings oficiales'
+      'Búsqueda inteligente de personajes',
+      'Validación cruzada automática',
+      'Sistema de pistas disponible',
+      'Temporizador de 20 minutos',
+      'Base de datos de 168 personajes'
     ],
     howToPlay: [
-      'Elige un criterio de ordenamiento',
-      'Arrastra personajes a cada nivel',
-      'Nivel superior = mayor atributo',
-      'Completa toda la pirámide correctamente'
+      'Lee las condiciones de filas y columnas',
+      'Busca personajes que cumplan ambas',
+      'Completa las 9 casillas',
+      '¡Usa las pistas si necesitas ayuda!'
     ],
-    status: 'coming-soon'
+    status: 'available'
   },
   {
-    id: 'top-10',
-    title: 'Top 10 Ranking',
-    description: 'Crea tu ranking personal de anime, personajes o elementos y compáralo con rankings oficiales y de la comunidad.',
-    emoji: '🏆',
-    difficulty: 'Medio',
-    estimatedTime: '10-15 min',
+    id: 'anime-wordle',
+    title: 'Anime Wordle',
+    description: 'Adivina el personaje de anime con pistas visuales y de texto en 6 intentos.',
+    emoji: '🔤',
+    difficulty: 'Fácil',
+    estimatedTime: '3-5 min',
     maxPlayers: '1 jugador',
-    rating: 4.9,
-    href: '/games/top-10',
-    color: 'from-orange-500 to-red-500',
+    rating: 4.5,
+    href: '/games/anime-wordle',
+    color: 'from-green-500 to-emerald-500',
     features: [
-      'Rankings personalizables',
-      'Más de 30 elementos por categoría',
-      'Justificaciones opcionales',
-      'Comparación automática',
-      'Sistema de puntuación inteligente'
+      'Pistas visuales progresivas',
+      'Sistema de colores intuitivo',
+      'Múltiples intentos',
+      'Feedback inmediato',
+      'Personajes de One Piece'
     ],
     howToPlay: [
-      'Selecciona una categoría',
-      'Ordena elementos del 1 al 10',
-      'Añade justificaciones (opcional)',
-      'Compara con el ranking oficial'
+      'Escribe el nombre de un personaje',
+      'Observa las pistas de colores',
+      'Usa las pistas para ajustar',
+      '¡Adivina en 6 intentos o menos!'
     ],
-    status: 'coming-soon'
+    status: 'available'
   }
 ];
 
@@ -179,24 +127,36 @@ export default function GamesPage() {
   return (
     <div className="min-h-screen py-12">
       <div className="container mx-auto px-4">
+        {/* Navigation */}
+        <div className="flex justify-center mb-8">
+          <div className="flex gap-4">
+            <Link href="/">
+              <Button className="bg-slate-700 hover:bg-slate-600 text-white">
+                🏠 Inicio
+              </Button>
+            </Link>
+            <Link href="/personajes">
+              <Button className="bg-purple-600 hover:bg-purple-700 text-white">
+                👥 Personajes
+              </Button>
+            </Link>
+          </div>
+        </div>
+
         {/* Header */}
         <div className="text-center mb-16">
           <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-            🎮 Mini-Juegos de Anime
+            🎮 AnimeHaus - Mini-Juegos
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-            Explora nuestra colección de mini-juegos únicos diseñados para poner a prueba 
-            tu conocimiento de anime de manera divertida e interactiva.
+            Explora nuestra colección de mini-juegos únicos basados en One Piece. 
+            Pon a prueba tu conocimiento de manera divertida e interactiva.
           </p>
           
           <div className="flex flex-wrap justify-center gap-4">
             <div className="flex items-center space-x-2 bg-green-50 px-4 py-2 rounded-full">
               <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-              <span className="text-sm font-medium text-green-800">1 Disponible</span>
-            </div>
-            <div className="flex items-center space-x-2 bg-blue-50 px-4 py-2 rounded-full">
-              <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-              <span className="text-sm font-medium text-blue-800">4 Próximamente</span>
+              <span className="text-sm font-medium text-green-800">3 Disponibles</span>
             </div>
           </div>
         </div>

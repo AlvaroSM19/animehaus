@@ -4,48 +4,48 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --background: 230 35% 7%;
+    --foreground: 60 90% 90%;
+    --card: 224 71% 12%;
+    --card-foreground: 60 90% 90%;
+    --popover: 224 71% 12%;
+    --popover-foreground: 60 90% 90%;
+    --primary: 262 83% 25%;
+    --primary-foreground: 60 90% 90%;
+    --secondary: 220 43% 15%;
+    --secondary-foreground: 60 90% 90%;
+    --muted: 220 43% 15%;
+    --muted-foreground: 220 14% 65%;
+    --accent: 45 86% 58%;
+    --accent-foreground: 230 35% 7%;
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --destructive-foreground: 60 90% 90%;
+    --border: 45 86% 58%;
+    --input: 224 71% 12%;
+    --ring: 45 86% 58%;
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --background: 230 35% 7%;
+    --foreground: 60 90% 90%;
+    --card: 224 71% 12%;
+    --card-foreground: 60 90% 90%;
+    --popover: 224 71% 12%;
+    --popover-foreground: 60 90% 90%;
+    --primary: 262 83% 25%;
+    --primary-foreground: 60 90% 90%;
+    --secondary: 220 43% 15%;
+    --secondary-foreground: 60 90% 90%;
+    --muted: 220 43% 15%;
+    --muted-foreground: 220 14% 65%;
+    --accent: 45 86% 58%;
+    --accent-foreground: 230 35% 7%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 60 90% 90%;
+    --border: 45 86% 58%;
+    --input: 224 71% 12%;
+    --ring: 45 86% 58%;
   }
 }
 
@@ -60,7 +60,7 @@
 
 /* Custom anime-themed styles */
 .anime-gradient {
-  background: linear-gradient(45deg, #FF6B35, #FFD700, #7CB518, #00FFFF);
+  background: linear-gradient(45deg, #1e0a3e, #3730a3, #7c3aed, #fbbf24);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
 }
@@ -79,15 +79,44 @@
 
 .game-card {
   @apply transition-all duration-300 hover:scale-105 hover:shadow-xl;
+  border: 2px solid hsl(45 86% 58%);
+}
+
+.game-card:hover {
+  box-shadow: 0 25px 50px -12px rgba(251, 191, 36, 0.25);
 }
 
 .glow-effect {
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+  box-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
   transition: box-shadow 0.3s ease;
+  border: 1px solid hsl(45 86% 58%);
 }
 
 .glow-effect:hover {
-  box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+  box-shadow: 0 0 30px rgba(251, 191, 36, 0.6);
+}
+
+/* Character image styles */
+.character-image {
+  border: 3px solid hsl(45 86% 58%);
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.character-image:hover {
+  box-shadow: 0 0 25px rgba(251, 191, 36, 0.5);
+  transform: scale(1.05);
+}
+
+.character-image-small {
+  border: 2px solid hsl(45 86% 58%);
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.character-image-small:hover {
+  box-shadow: 0 0 15px rgba(251, 191, 36, 0.4);
+  border-color: hsl(45 86% 68%);
 }
 
 /* Hero section animations */
@@ -125,11 +154,36 @@
 }
 
 .game-card-grid {
-  background: linear-gradient(135deg, #4FACFE 0%, #00F2FE 100%);
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  box-shadow: 0 10px 30px rgba(252, 182, 159, 0.3);
+  transition: all 0.3s ease;
+}
+
+.game-card-grid:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(252, 182, 159, 0.4);
+}
+
+.game-card-wordle {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  box-shadow: 0 10px 30px rgba(79, 172, 254, 0.3);
+  transition: all 0.3s ease;
+}
+
+.game-card-wordle:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(79, 172, 254, 0.4);
 }
 
 .game-card-connections {
-  background: linear-gradient(135deg, #7CB518 0%, #A8E6CF 100%);
+  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+  box-shadow: 0 10px 30px rgba(250, 112, 154, 0.3);
+  transition: all 0.3s ease;
+}
+
+.game-card-connections:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(250, 112, 154, 0.4);
 }
 
 .game-card-pyramid {
@@ -138,6 +192,18 @@
 
 .game-card-top10 {
   background: linear-gradient(135deg, #FF6B35 0%, #FFD700 100%);
+}
+
+/* Game Card Styles */
+.game-card-impostor {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+  transition: all 0.3s ease;
+}
+
+.game-card-impostor:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(102, 126, 234, 0.4);
 }
 
 /* Loading animations */
@@ -222,9 +288,660 @@
   @apply bg-gray-500 dark:bg-gray-500;
 }
 
-/* Responsive utilities */
-@media (max-width: 640px) {
-  .game-card {
-    @apply hover:scale-100;
+/* Utility classes for truncating text in image cards */
+.line-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+/* Anime image loading states */
+.anime-image-loading {
+  background: linear-gradient(45deg, #f3f4f6, #e5e7eb, #f3f4f6);
+  background-size: 400% 400%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Character image hover effects for grid game */
+.character-card:hover .character-image {
+  transform: scale(1.05);
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Impostor game character circle improvements */
+.character-circle {
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.character-circle::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: conic-gradient(from 0deg, transparent, rgba(168, 85, 247, 0.4), transparent);
+  border-radius: 50%;
+  z-index: -1;
+  animation: rotate 2s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.character-circle:hover::before {
+  opacity: 1;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Anime-themed animations and styles */
+@keyframes animate-spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes anime-flash {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes anime-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(239, 68, 68, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.8), 0 0 30px rgba(239, 68, 68, 0.6);
+  }
+}
+
+.animate-spin-slow {
+  animation: animate-spin-slow 8s linear infinite;
+}
+
+.animate-anime-flash {
+  animation: anime-flash 1s ease-in-out infinite;
+}
+
+.animate-anime-glow {
+  animation: anime-glow 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Custom Scroll Effects and Animations */
+@layer utilities {
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Custom cursor styles */
+  .custom-cursor-active {
+    cursor: none;
+  }
+  
+  .custom-cursor-active button,
+  .custom-cursor-active a,
+  .custom-cursor-active [role="button"] {
+    cursor: none;
+  }
+  
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Backdrop blur utilities */
+  .backdrop-blur-xs {
+    backdrop-filter: blur(2px);
+  }
+  
+  /* Glass morphism effect */
+  .glassmorphism {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+  }
+  
+  .glassmorphism:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Anime glow effect */
+  .anime-glow {
+    box-shadow: 
+      0 0 20px rgba(147, 51, 234, 0.3),
+      0 0 40px rgba(147, 51, 234, 0.2),
+      0 0 60px rgba(147, 51, 234, 0.1);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .anime-glow:hover {
+    box-shadow: 
+      0 0 30px rgba(147, 51, 234, 0.5),
+      0 0 60px rgba(147, 51, 234, 0.3),
+      0 0 90px rgba(147, 51, 234, 0.2);
+  }
+  
+  /* Gradient radial utility */
+  .bg-gradient-radial {
+    background-image: radial-gradient(circle, var(--tw-gradient-stops));
+  }
+}
+
+/* Custom Animations */
+@keyframes pulse-slow {
+  0%, 100% { 
+    opacity: 0.1; 
+    transform: scale(1); 
+  }
+  50% { 
+    opacity: 0.3; 
+    transform: scale(1.1); 
+  }
+}
+
+@keyframes spin-slow {
+  from { 
+    transform: rotate(0deg); 
+  }
+  to { 
+    transform: rotate(360deg); 
+  }
+}
+
+@keyframes bounce-slow {
+  0%, 100% { 
+    transform: translateY(0px); 
+  }
+  50% { 
+    transform: translateY(-10px); 
+  }
+}
+
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px); 
+  }
+  50% { 
+    transform: translateY(-15px); 
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInRotate {
+  from {
+    opacity: 0;
+    transform: translateY(50px) rotate(-5deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+/* Animation classes */
+.animate-pulse-slow {
+  animation: pulse-slow 6s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 4s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Scroll reveal animations */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-stagger {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.scroll-stagger.stagger-revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Horizontal Scroll Effects */
+.scroll-horizontal-enter {
+  opacity: 0;
+  transform: translateX(var(--scroll-distance, 100px));
+  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-horizontal-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.scroll-horizontal-left {
+  --scroll-distance: -100px;
+}
+
+.scroll-horizontal-right {
+  --scroll-distance: 100px;
+}
+
+/* Horizontal Scroll Section Styles */
+.horizontal-scroll-section {
+  scroll-behavior: smooth;
+  overscroll-behavior: none;
+}
+
+.horizontal-scroll-track {
+  will-change: transform;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  perspective: 1200px;
+}
+
+.horizontal-scroll-item {
+  transform-origin: center;
+  backface-visibility: hidden;
+  contain: layout style paint;
+  will-change: transform, opacity;
+}
+
+/* Mejoras para el scroll horizontal de derecha a izquierda */
+.horizontal-scroll-item-entering {
+  animation: slideInFromRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideInFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px) scale(0.8) rotateY(20deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1) rotateY(0deg);
+  }
+}
+
+/* Efecto de aparición gradual para cada carta */
+.horizontal-game-card {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.horizontal-game-card.entering {
+  animation: cardReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes cardReveal {
+  0% {
+    opacity: 0;
+    transform: translateX(50px) scale(0.9) rotateY(10deg);
+    filter: blur(4px);
+  }
+  50% {
+    opacity: 0.7;
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1) rotateY(0deg);
+    filter: blur(0px);
+  }
+}
+
+/* Efecto de parallax en el fondo */
+.horizontal-scroll-bg {
+  background: linear-gradient(90deg, 
+    rgba(17, 24, 39, 1) 0%,
+    rgba(88, 28, 135, 0.8) 25%,
+    rgba(147, 51, 234, 0.6) 50%,
+    rgba(88, 28, 135, 0.8) 75%,
+    rgba(17, 24, 39, 1) 100%
+  );
+  background-size: 200% 100%;
+  animation: backgroundFlow 20s ease-in-out infinite;
+}
+
+@keyframes backgroundFlow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Indicador de progreso mejorado */
+.progress-indicator {
+  backdrop-filter: blur(12px);
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.progress-bar {
+  background: linear-gradient(90deg, #ffd700, #ff6b6b, #4ecdc4);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+  border-radius: 999px;
+}
+
+/* Optimizaciones de performance */
+.horizontal-scroll-container {
+  contain: layout style paint;
+  will-change: transform;
+}
+
+/* Indicadores visuales para el scroll horizontal */
+.scroll-indicator-left {
+  position: fixed;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 215, 0, 0.8);
+  width: 4px;
+  height: 60px;
+  border-radius: 2px;
+  opacity: 0.6;
+  z-index: 40;
+}
+
+.scroll-indicator-right {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 215, 0, 0.8);
+  width: 4px;
+  height: 60px;
+  border-radius: 2px;
+  opacity: 0.6;
+  z-index: 40;
+}
+
+/* Efectos de parallax en el fondo */
+.horizontal-bg-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.horizontal-bg-particles::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: -10%;
+  width: 120%;
+  height: 60%;
+  background: radial-gradient(ellipse, rgba(147, 51, 234, 0.1) 0%, transparent 70%);
+  animation: backgroundDrift 15s ease-in-out infinite;
+}
+
+@keyframes backgroundDrift {
+  0%, 100% { transform: translateX(0) scale(1); }
+  50% { transform: translateX(30px) scale(1.1); }
+}
+
+/* Mejorar la visibilidad de las cartas */
+.horizontal-game-card-enhanced {
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.horizontal-game-card-enhanced:hover {
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    0 0 30px rgba(255, 215, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+/* Compactación global de la página */
+.compact-section {
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
+}
+
+.compact-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Reducir espacios en móviles */
+@media (max-width: 768px) {
+  .compact-section {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+  
+  .hero-section {
+    min-height: 70vh !important;
+  }
+}
+
+/* Optimizar el espaciado entre elementos */
+.section-gap {
+  margin-bottom: 1rem;
+}
+
+.section-gap-small {
+  margin-bottom: 0.5rem;
+}
+
+/* Hacer que los efectos de scroll tomen menos espacio */
+.scroll-section-compact {
+  height: 250vh !important;
+}
+
+/* Compactar textos y títulos */
+.compact-title {
+  line-height: 1.1;
+  margin-bottom: 0.75rem;
+}
+
+.compact-text {
+  line-height: 1.4;
+  margin-bottom: 1rem;
+}
+
+/* Eliminar cualquier gap entre secciones */
+.seamless-section {
+  margin: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Hacer que la sección de juegos sea perfectamente pegada */
+.games-section-seamless {
+  margin-top: -1px !important;
+  margin-bottom: -1px !important;
+}
+
+/* Mejorar la navegación de los links en las cartas */
+.game-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  height: 100%;
+}
+
+.game-card-link:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Mejorar la visibilidad del primer y último elemento */
+.first-game-card {
+  margin-left: 2rem !important;
+}
+
+.last-game-card {
+  margin-right: 2rem !important;
+}
+
+/* Asegurar que el primer elemento esté centrado inicialmente */
+.horizontal-scroll-content {
+  padding-left: 50vw;
+  padding-right: 50vw;
+}
+
+/* Hacer las carjas más grandes y visibles */
+.large-game-card {
+  min-height: 24rem; /* h-96 equivalente */
+  width: 20rem; /* w-80 equivalente */
+}
+
+/* Reducir la altura de la sección morada */
+/* AnimeHaus Custom Styles */
+.animehaus-glow {
+  box-shadow: 0 0 20px rgba(255, 183, 197, 0.4);
+}
+
+.animehaus-gradient-text {
+  background: linear-gradient(135deg, #FFB7C5, #FFD700, #9D4EDD);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.animehaus-card-hover {
+  transition: all 0.3s ease;
+}
+
+.animehaus-card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-glow {
+  from {
+    box-shadow: 0 0 10px rgba(255, 183, 197, 0.4);
+  }
+  to {
+    box-shadow: 0 0 30px rgba(255, 183, 197, 0.8);
+  }
+}
+
+.compact-horizontal-scroll {
+  height: 200vh !important;
+}
+
+@media (max-width: 768px) {
+  .large-game-card {
+    min-height: 20rem;
+    width: 18rem;
+  }
+  
+  .compact-horizontal-scroll {
+    height: 180vh !important;
   }
 }

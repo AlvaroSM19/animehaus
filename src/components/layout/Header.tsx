@@ -10,21 +10,21 @@ import {
   Gamepad2, 
   Trophy,
   Settings,
-  User
+  User,
+  Users
 } from 'lucide-react';
 
 const navigation = [
   { name: 'Inicio', href: '/', icon: Home },
   { name: 'Juegos', href: '/games', icon: Gamepad2 },
+  { name: 'Personajes', href: '/characters', icon: Users },
   { name: 'Rankings', href: '/rankings', icon: Trophy },
 ];
 
 const games = [
-  { name: 'Bingo Anime', href: '/games/bingo', emoji: '🎲' },
-  { name: 'Grid Trivia', href: '/games/grid-trivia', emoji: '🎯' },
-  { name: 'Connections', href: '/games/connections', emoji: '🔗' },
-  { name: 'Pyramid', href: '/games/pyramid', emoji: '⛰️' },
-  { name: 'Top 10', href: '/games/top-10', emoji: '🏆' },
+  { name: 'Anime Impostor', href: '/games/impostor', emoji: '🕵️' },
+  { name: 'Cuadrícula Anime', href: '/games/anime-grid', emoji: '🎯' },
+  { name: 'Anime Wordle', href: '/games/anime-wordle', emoji: '🔤' },
 ];
 
 export default function Header() {
@@ -39,7 +39,7 @@ export default function Header() {
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-2">
               <div className="text-2xl font-bold bg-gradient-to-r from-anime-sakura to-anime-gold bg-clip-text text-transparent">
-                🎌 AnimeQuiz
+                � AnimeHaus
               </div>
             </Link>
           </div>

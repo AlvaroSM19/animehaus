@@ -7,23 +7,23 @@ import Footer from '@/components/layout/Footer';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'AnimeQuiz Hub - Mini-juegos y Quizzes de Anime',
-  description: 'La plataforma definitiva para mini-juegos y quizzes de anime. Bingo, Grid Trivia, Connections, Pyramid y Top 10. Desafía tu conocimiento anime.',
-  keywords: ['anime', 'quiz', 'juegos', 'bingo', 'trivia', 'manga', 'otaku'],
-  authors: [{ name: 'AnimeQuiz Hub' }],
+  title: 'AnimeHaus - Tu Casa del Anime',
+  description: 'Tu casa del anime. Explora, juega y desafía tu conocimiento con mini-juegos únicos basados en One Piece y más universos anime.',
+  keywords: ['anime', 'one piece', 'juegos', 'quiz', 'personajes', 'manga', 'otaku'],
+  authors: [{ name: 'AnimeHaus' }],
   viewport: 'width=device-width, initial-scale=1',
   themeColor: '#FFB7C5',
   openGraph: {
-    title: 'AnimeQuiz Hub - Mini-juegos y Quizzes de Anime',
-    description: 'Desafía tu conocimiento anime con nuestros mini-juegos: Bingo, Grid Trivia, Connections, Pyramid y Top 10.',
+    title: 'AnimeHaus - Tu Casa del Anime',
+    description: 'Explora, juega y desafía tu conocimiento con mini-juegos únicos basados en One Piece.',
     type: 'website',
     locale: 'es_ES',
-    siteName: 'AnimeQuiz Hub',
+    siteName: 'AnimeHaus',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AnimeQuiz Hub - Mini-juegos y Quizzes de Anime',
-    description: 'La plataforma definitiva para mini-juegos y quizzes de anime.',
+    title: 'AnimeHaus - Tu Casa del Anime',
+    description: 'Tu casa del anime. Explora, juega y desafía tu conocimiento.',
   },
   robots: {
     index: true,
