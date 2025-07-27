@@ -1,7 +1,35 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Play, Users, Star, Trophy, ArrowRight, Gamepad2, Zap, Crown, Target, Brain, TrendingUp, Award } from 'lucide-react';
+import { Play, Users, Gamepad2, Crown, Target, Brain, TrendingUp, Award } from 'lucide-react';
+import type { Metadata } from 'next';
+import StructuredData, { websiteStructuredData, organizationStructuredData } from '@/components/seo/StructuredData';
+
+export const metadata: Metadata = {
+  title: 'Home',
+  description: 'AnimeHaus is the ultimate destination for anime quiz games. Play One Piece Wordle, test your character knowledge, and challenge yourself with interactive anime mini-games featuring 164+ One Piece characters.',
+  keywords: [
+    'animehaus home', 'anime quiz games', 'one piece wordle', 'anime character quiz',
+    'one piece games online', 'anime trivia hub', 'luffy games', 'anime knowledge test',
+    'one piece character database', 'anime mini games free', 'otaku quiz games'
+  ],
+  openGraph: {
+    title: 'AnimeHaus - Ultimate Anime Quiz Hub | One Piece Games',
+    description: 'Play interactive One Piece games, test your anime knowledge, and explore 164+ character database. Features Wordle-style games, trivia, and character quizzes.',
+    url: 'https://animehaus.vercel.app',
+    images: [
+      {
+        url: '/og-home.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'AnimeHaus - Anime Quiz Games Homepage',
+      }
+    ],
+  },
+  alternates: {
+    canonical: 'https://animehaus.vercel.app',
+  },
+};
 
 export default function HomePage() {
   return (
@@ -162,6 +190,50 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* SEO Content Section */}
+      <section className="py-16 px-4 relative z-10">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12">
+            <div className="bg-slate-800/30 rounded-xl p-8 border border-slate-600/30 backdrop-blur-sm">
+              <h2 className="text-2xl font-bold text-white mb-4">
+                Why Choose AnimeHaus for Anime Quizzes?
+              </h2>
+              <div className="space-y-4 text-gray-300">
+                <p>
+                  <strong className="text-purple-400">AnimeHaus</strong> is the ultimate destination for anime quiz enthusiasts. Our platform features a comprehensive collection of <strong>One Piece games</strong> and interactive quizzes designed to test your anime knowledge.
+                </p>
+                <ul className="space-y-2 list-disc list-inside">
+                  <li><strong>164+ One Piece Characters:</strong> Complete database with bounties, devil fruits, and haki abilities</li>
+                  <li><strong>Anime Wordle:</strong> Guess character names in our Wordle-style puzzle game</li>
+                  <li><strong>Interactive Games:</strong> Multiple game modes including Impostor and Who Am I</li>
+                  <li><strong>Regular Updates:</strong> New characters and features added regularly</li>
+                </ul>
+              </div>
+            </div>
+            <div className="bg-slate-800/30 rounded-xl p-8 border border-slate-600/30 backdrop-blur-sm">
+              <h3 className="text-2xl font-bold text-white mb-4">
+                Master Your One Piece Knowledge
+              </h3>
+              <div className="space-y-4 text-gray-300">
+                <p>
+                  Test your knowledge of the <strong>Straw Hat Pirates</strong>, <strong>Devil Fruit users</strong>, and <strong>Haki masters</strong> with our expertly crafted anime quizzes. Whether you're a casual fan or a dedicated otaku, our games offer the perfect challenge.
+                </p>
+                <div className="grid grid-cols-2 gap-4 mt-6">
+                  <div className="text-center p-4 bg-purple-600/20 rounded-lg">
+                    <div className="text-2xl font-bold text-purple-400">164+</div>
+                    <div className="text-sm">Characters</div>
+                  </div>
+                  <div className="text-center p-4 bg-blue-600/20 rounded-lg">
+                    <div className="text-2xl font-bold text-blue-400">5+</div>
+                    <div className="text-sm">Game Modes</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Simple Footer Section */}
       <section className="py-16 px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
@@ -180,7 +252,7 @@ export default function HomePage() {
                 </Link>
               </Button>
               <Button asChild variant="outline" size="lg" className="border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white shadow-lg hover:shadow-blue-500/25 transition-all duration-300">
-                <Link href="/personajes">
+                <Link href="/characters">
                   <Users className="mr-2 h-5 w-5" />
                   Browse Characters
                 </Link>
@@ -189,6 +261,10 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      
+      {/* SEO Structured Data */}
+      <StructuredData type="WebSite" data={websiteStructuredData} />
+      <StructuredData type="Organization" data={organizationStructuredData} />
     </div>
   );
 }
