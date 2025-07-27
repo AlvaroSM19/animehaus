@@ -2,34 +2,29 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { Button } from '@/components/ui/button';
 import { 
   Menu, 
   X, 
   Home, 
   Gamepad2, 
-  Trophy,
-  Settings,
-  User,
   Users
 } from 'lucide-react';
 
 const navigation = [
-  { name: 'Inicio', href: '/', icon: Home },
-  { name: 'Juegos', href: '/games', icon: Gamepad2 },
-  { name: 'Personajes', href: '/characters', icon: Users },
-  { name: 'Rankings', href: '/rankings', icon: Trophy },
+  { name: 'Home', href: '/', icon: Home },
+  { name: 'Games', href: '/games', icon: Gamepad2 },
+  { name: 'Characters', href: '/personajes', icon: Users },
 ];
 
 const games = [
-  { name: 'Anime Impostor', href: '/games/impostor', emoji: '🕵️' },
-  { name: 'Cuadrícula Anime', href: '/games/anime-grid', emoji: '🎯' },
-  { name: 'Anime Wordle', href: '/games/anime-wordle', emoji: '🔤' },
+  { name: 'Anime Impostor', href: '/games/impostor' },
+  { name: 'Anime Grid', href: '/games/anime-grid' },
+  { name: 'Higher or Lower', href: '/games/higher-lower' },
+  { name: 'Anime Wordle', href: '/games/anime-wordle' },
 ];
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isGamesMenuOpen, setIsGamesMenuOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -39,7 +34,7 @@ export default function Header() {
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-2">
               <div className="text-2xl font-bold bg-gradient-to-r from-anime-sakura to-anime-gold bg-clip-text text-transparent">
-                � AnimeHaus
+                AnimeHaus
               </div>
             </Link>
           </div>
@@ -60,49 +55,7 @@ export default function Header() {
                   </Link>
                 );
               })}
-              
-              {/* Games Dropdown */}
-              <div className="relative">
-                <button
-                  onClick={() => setIsGamesMenuOpen(!isGamesMenuOpen)}
-                  className="flex items-center space-x-1 text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
-                >
-                  <Gamepad2 className="h-4 w-4" />
-                  <span>Mini-Juegos</span>
-                </button>
-                
-                {isGamesMenuOpen && (
-                  <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50">
-                    <div className="py-1">
-                      {games.map((game) => (
-                        <Link
-                          key={game.name}
-                          href={game.href}
-                          onClick={() => setIsGamesMenuOpen(false)}
-                          className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                        >
-                          <span className="mr-3">{game.emoji}</span>
-                          {game.name}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
             </div>
-          </div>
-
-          {/* User Actions */}
-          <div className="hidden md:flex items-center space-x-4">
-            <Button variant="ghost" size="sm">
-              <Settings className="h-4 w-4" />
-            </Button>
-            <Button variant="ghost" size="sm">
-              <User className="h-4 w-4" />
-            </Button>
-            <Button variant="anime" size="sm">
-              Jugar Ahora
-            </Button>
           </div>
 
           {/* Mobile menu button */}
@@ -140,7 +93,7 @@ export default function Header() {
               })}
               
               <div className="border-t pt-4 mt-4">
-                <div className="text-sm font-medium text-gray-500 px-3 py-2">Mini-Juegos</div>
+                <div className="text-sm font-medium text-gray-500 px-3 py-2">Mini-Games</div>
                 {games.map((game) => (
                   <Link
                     key={game.name}
@@ -148,24 +101,9 @@ export default function Header() {
                     onClick={() => setIsMenuOpen(false)}
                     className="flex items-center space-x-2 text-gray-600 hover:text-gray-900 block px-6 py-2 rounded-md text-sm"
                   >
-                    <span>{game.emoji}</span>
                     <span>{game.name}</span>
                   </Link>
                 ))}
-              </div>
-              
-              <div className="border-t pt-4 mt-4 space-y-2">
-                <Button variant="ghost" className="w-full justify-start">
-                  <Settings className="h-4 w-4 mr-2" />
-                  Configuración
-                </Button>
-                <Button variant="ghost" className="w-full justify-start">
-                  <User className="h-4 w-4 mr-2" />
-                  Perfil
-                </Button>
-                <Button variant="anime" className="w-full">
-                  Jugar Ahora
-                </Button>
               </div>
             </div>
           </div>

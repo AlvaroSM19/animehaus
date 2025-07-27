@@ -86,8 +86,8 @@ export function SimpleHorizontalScroll({ children, className = '' }: SimpleHoriz
           />
         </div>
         <div className="text-xs mt-1 opacity-75">
-          {scrollProgress < 0.1 ? '← Continúa scrolleando' : 
-           scrollProgress > 0.9 ? 'Final →' : '← Explorando →'}
+          {scrollProgress < 0.1 ? '← Continue scrolling' : 
+           scrollProgress > 0.9 ? 'End →' : '← Exploring →'}
         </div>
       </div>
       
@@ -95,9 +95,7 @@ export function SimpleHorizontalScroll({ children, className = '' }: SimpleHoriz
       {scrollProgress < 0.05 && (
         <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50 bg-black/80 text-white px-6 py-3 rounded-full border border-anime-gold/50 animate-pulse">
           <div className="flex items-center gap-2 text-sm">
-            <span>🎮</span>
-            <span>Scroll hacia abajo para explorar los juegos</span>
-            <span>👇</span>
+            <span>Scroll down to explore the games</span>
           </div>
         </div>
       )}

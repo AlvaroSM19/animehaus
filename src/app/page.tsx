@@ -1,250 +1,191 @@
 import Link from 'next/link';
-import { CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { 
-  Play, 
-  Users, 
-  Trophy, 
-  ArrowRight,
-  Star,
-  GamepadIcon,
-  TrendingUp,
-  Clock,
-  Target
-} from 'lucide-react';
-
-const games = [
-  {
-    id: 'impostor',
-    title: 'Anime Impostor',
-    description: 'Encuentra el personaje que no pertenece al grupo temático',
-    emoji: '🕵️',
-    difficulty: 'Medio',
-    players: '1 jugador',
-    time: '5-10 min',
-    href: '/games/impostor',
-    color: 'from-red-600 to-pink-600',
-    features: ['Interfaz circular', 'Feedback inmediato', 'Múltiples categorías']
-  },
-  {
-    id: 'anime-grid',
-    title: 'Cuadrícula de Anime',
-    description: 'Completa la cuadrícula con personajes que cumplan ambas condiciones',
-    emoji: '🎯',
-    difficulty: 'Difícil',
-    players: '1 jugador',
-    time: '15-20 min',
-    href: '/games/anime-grid',
-    color: 'from-blue-600 to-purple-600',
-    features: ['Búsqueda inteligente', 'Validación cruzada', 'Múltiples categorías']
-  },
-  {
-    id: 'anime-wordle',
-    title: 'Anime Wordle',
-    description: 'Adivina el personaje de anime con pistas visuales',
-    emoji: '🔤',
-    difficulty: 'Fácil',
-    players: '1 jugador',
-    time: '3-5 min',
-    href: '/games/anime-wordle',
-    color: 'from-green-600 to-teal-600',
-    features: ['Pistas visuales', 'Sistema de colores', 'Múltiples intentos']
-  }
-];
-
-const stats = [
-  {
-    icon: GamepadIcon,
-    value: '3',
-    label: 'Mini-Juegos',
-    description: 'Diferentes tipos de desafíos'
-  },
-  {
-    icon: Users,
-    value: '168',
-    label: 'Personajes',
-    description: 'Personajes de One Piece incluidos'
-  },
-  {
-    icon: Star,
-    value: '1',
-    label: 'Anime',
-    description: 'One Piece completamente cubierto'
-  },
-  {
-    icon: TrendingUp,
-    value: '95%',
-    label: 'Satisfacción',
-    description: 'Calificación de usuarios'
-  }
-];
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Play, Users, Star, Trophy, ArrowRight, Gamepad2, Zap, Crown, Target, Brain, TrendingUp, Award } from 'lucide-react';
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900">
+    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-40 -left-40 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-40 right-40 w-60 h-60 bg-pink-500/10 rounded-full blur-3xl"></div>
+      </div>
+
       {/* Hero Section */}
-      <section className="relative">
-        <div className="container mx-auto px-4 py-16 sm:py-20 lg:py-24">
-          <div className="text-center">
-            <div className="mb-8">
-              <span className="text-6xl sm:text-7xl lg:text-8xl">�</span>
-            </div>
-            
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6">
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
-                Anime
-              </span>
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
-                Haus
-              </span>
-            </h1>
-            
-            <p className="text-xl sm:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Tu casa del anime. Explora, juega y desafía tu conocimiento con mini-juegos únicos 
-              basados en One Piece.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link 
-                href="/games"
-                className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold px-8 py-4 text-lg rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center"
-              >
-                <Play className="mr-2 h-5 w-5" />
-                Jugar Ahora
-              </Link>
-              
-              <Link 
-                href="/personajes"
-                className="bg-gradient-to-r from-yellow-600 to-orange-600 hover:from-yellow-700 hover:to-orange-700 text-white font-bold px-8 py-4 text-lg rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center"
-              >
-                <Users className="mr-2 h-5 w-5" />
-                Ver Personajes
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="py-16 bg-black/20 backdrop-blur-sm">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {stats.map((stat, index) => {
-              const Icon = stat.icon;
-              return (
-                <div 
-                  key={index} 
-                  className="text-center p-6 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300 transform hover:scale-105"
-                >
-                  <div className="flex justify-center mb-4">
-                    <div className="p-3 bg-yellow-500/20 rounded-full">
-                      <Icon className="h-8 w-8 text-yellow-400" />
-                    </div>
-                  </div>
-                  <div className="text-3xl font-bold text-white mb-2">{stat.value}</div>
-                  <div className="text-lg font-semibold text-gray-300 mb-1">{stat.label}</div>
-                  <div className="text-sm text-gray-400">{stat.description}</div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Games Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
-              Mini-Juegos Disponibles
-            </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Cada juego ofrece una experiencia única para poner a prueba tu conocimiento de anime
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {games.map((game) => (
-              <Link key={game.id} href={game.href} className="block group">
-                <div className={`h-full bg-gradient-to-br ${game.color} p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform group-hover:scale-105 border border-white/20`}>
-                  <CardHeader className="text-white relative p-0 mb-6">
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="text-5xl">{game.emoji}</div>
-                      <div className="text-right">
-                        <div className="bg-white/20 px-3 py-1 rounded-full text-sm mb-2">
-                          {game.difficulty}
-                        </div>
-                        <div className="flex items-center text-sm text-gray-200">
-                          <Clock className="mr-1 h-4 w-4" />
-                          {game.time}
-                        </div>
-                      </div>
-                    </div>
-                    <CardTitle className="text-2xl mb-3 text-white">{game.title}</CardTitle>
-                    <CardDescription className="text-gray-100 text-base leading-relaxed">
-                      {game.description}
-                    </CardDescription>
-                  </CardHeader>
-                  
-                  <CardContent className="text-white p-0">
-                    <div className="flex items-center text-sm text-gray-200 mb-4">
-                      <Users className="mr-2 h-4 w-4" />
-                      {game.players}
-                    </div>
-                    
-                    <div className="space-y-3">
-                      <h4 className="font-semibold text-sm flex items-center">
-                        <Target className="mr-2 h-4 w-4" />
-                        Características:
-                      </h4>
-                      <ul className="text-sm text-gray-100 space-y-2">
-                        {game.features.map((feature, idx) => (
-                          <li key={idx} className="flex items-center">
-                            <Star className="mr-2 h-3 w-3 text-yellow-400 flex-shrink-0" />
-                            <span>{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    
-                    <div className="mt-6 bg-white text-black hover:bg-gray-100 py-3 rounded-lg flex items-center justify-center text-base font-medium transition-all duration-200 group-hover:scale-105">
-                      <Play className="mr-2 h-4 w-4" />
-                      Jugar Ahora
-                    </div>
-                  </CardContent>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-purple-600 to-blue-600 relative">
-        <div className="absolute inset-0 bg-black/20"></div>
-        <div className="container mx-auto px-4 text-center relative z-10">
-          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
-            ¿Listo para el Desafío?
-          </h2>
-          <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
-            Únete a miles de otakus que ya están poniendo a prueba su conocimiento de anime
+      <section className="relative pt-20 pb-12 px-4">
+        <div className="max-w-6xl mx-auto text-center relative z-10">
+          <h1 className="text-8xl md:text-9xl font-bold mb-8 relative">
+            <span className="bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 bg-clip-text text-transparent">
+              AnimeHaus
+            </span>
+          </h1>
+          <p className="text-2xl md:text-3xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed">
+            Test your One Piece knowledge with our collection of interactive mini-games
           </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link 
-              href="/games/impostor"
-              className="bg-white text-gray-900 hover:bg-gray-100 px-8 py-4 text-lg font-bold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center"
-            >
-              <Trophy className="mr-2 h-5 w-5" />
-              Comenzar con Impostor
-            </Link>
-            
-            <Link 
-              href="/games"
-              className="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4 text-lg font-bold rounded-xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center"
-            >
-              Ver Todos los Juegos
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
+        </div>
+      </section>
+
+      {/* Main Games Section */}
+      <section className="py-16 px-4 relative z-10">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12">
+            <Card className="bg-gradient-to-br from-purple-900/80 to-pink-900/80 border-purple-400/40 hover:border-purple-300/60 transition-all duration-300 group hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/40 p-8 backdrop-blur-sm">
+              <CardHeader className="relative text-center">
+                <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-500 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:shadow-lg group-hover:shadow-purple-500/25 transition-all duration-300 shadow-lg">
+                  <Crown className="w-10 h-10 text-white" />
+                </div>
+                <CardTitle className="text-white group-hover:text-purple-200 transition-colors text-3xl mb-4">
+                  Anime Impostor
+                </CardTitle>
+                <CardDescription className="text-gray-200 text-lg leading-relaxed">
+                  Find the character that doesn't belong to the thematic group. Test your knowledge of character relationships, crews, and anime classifications!
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="grid grid-cols-2 gap-4 text-center">
+                  <div className="bg-purple-500/30 rounded-lg p-3 border border-purple-400/30">
+                    <div className="text-orange-300 font-bold text-lg">Medium</div>
+                    <div className="text-gray-300 text-sm">Difficulty</div>
+                  </div>
+                  <div className="bg-purple-500/30 rounded-lg p-3 border border-purple-400/30">
+                    <div className="text-purple-300 font-bold text-lg">Quick</div>
+                    <div className="text-gray-300 text-sm">5-10 min</div>
+                  </div>
+                </div>
+                <Button asChild className="w-full bg-purple-600 hover:bg-purple-700 shadow-lg hover:shadow-purple-500/25 transition-all duration-300 py-6 text-lg border border-purple-400/20">
+                  <Link href="/games/impostor">
+                    <Play className="mr-3 h-6 w-6" />
+                    Play Impostor
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-gradient-to-br from-yellow-900/80 to-orange-900/80 border-yellow-400/40 hover:border-yellow-300/60 transition-all duration-300 group hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-yellow-500/40 p-8 backdrop-blur-sm">
+              <CardHeader className="relative text-center">
+                <div className="w-20 h-20 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:shadow-lg group-hover:shadow-yellow-500/25 transition-all duration-300 shadow-lg">
+                  <Brain className="w-10 h-10 text-white" />
+                </div>
+                <CardTitle className="text-white group-hover:text-yellow-200 transition-colors text-3xl mb-4">
+                  Anime Grid
+                </CardTitle>
+                <CardDescription className="text-gray-200 text-lg leading-relaxed">
+                  Complete the 3x3 grid with characters that meet both row and column conditions. Strategy and deep One Piece knowledge required!
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="grid grid-cols-2 gap-4 text-center">
+                  <div className="bg-yellow-500/30 rounded-lg p-3 border border-yellow-400/30">
+                    <div className="text-red-300 font-bold text-lg">Hard</div>
+                    <div className="text-gray-300 text-sm">Difficulty</div>
+                  </div>
+                  <div className="bg-yellow-500/30 rounded-lg p-3 border border-yellow-400/30">
+                    <div className="text-yellow-300 font-bold text-lg">Strategic</div>
+                    <div className="text-gray-300 text-sm">10-20 min</div>
+                  </div>
+                </div>
+                <Button asChild className="w-full bg-yellow-600 hover:bg-yellow-700 shadow-lg hover:shadow-yellow-500/25 transition-all duration-300 py-6 text-lg border border-yellow-400/20">
+                  <Link href="/games/anime-grid">
+                    <Play className="mr-3 h-6 w-6" />
+                    Play Grid
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-gradient-to-br from-red-900/80 to-orange-900/80 border-red-400/40 hover:border-red-300/60 transition-all duration-300 group hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-red-500/40 p-8 backdrop-blur-sm">
+              <CardHeader className="relative text-center">
+                <div className="w-20 h-20 bg-gradient-to-br from-red-500 to-orange-500 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:shadow-lg group-hover:shadow-red-500/25 transition-all duration-300 shadow-lg">
+                  <TrendingUp className="w-10 h-10 text-white" />
+                </div>
+                <CardTitle className="text-white group-hover:text-red-200 transition-colors text-3xl mb-4">
+                  Higher or Lower
+                </CardTitle>
+                <CardDescription className="text-gray-200 text-lg leading-relaxed">
+                  Compare One Piece character bounties and guess which is higher or lower. Perfect for beginners and bounty experts alike!
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="grid grid-cols-2 gap-4 text-center">
+                  <div className="bg-red-500/30 rounded-lg p-3 border border-red-400/30">
+                    <div className="text-yellow-300 font-bold text-lg">Easy</div>
+                    <div className="text-gray-300 text-sm">Difficulty</div>
+                  </div>
+                  <div className="bg-red-500/30 rounded-lg p-3 border border-red-400/30">
+                    <div className="text-red-300 font-bold text-lg">Fast</div>
+                    <div className="text-gray-300 text-sm">3-5 min</div>
+                  </div>
+                </div>
+                <Button asChild className="w-full bg-red-600 hover:bg-red-700 shadow-lg hover:shadow-red-500/25 transition-all duration-300 py-6 text-lg border border-red-400/20">
+                  <Link href="/games/higher-lower">
+                    <Play className="mr-3 h-6 w-6" />
+                    Play Bounties
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-gradient-to-br from-green-900/80 to-emerald-900/80 border-green-400/40 hover:border-green-300/60 transition-all duration-300 group hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-green-500/40 p-8 backdrop-blur-sm">
+              <CardHeader className="relative text-center">
+                <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-500 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:shadow-lg group-hover:shadow-green-500/25 transition-all duration-300 shadow-lg">
+                  <Award className="w-10 h-10 text-white" />
+                </div>
+                <CardTitle className="text-white group-hover:text-green-200 transition-colors text-3xl mb-4">
+                  Anime Wordle
+                </CardTitle>
+                <CardDescription className="text-gray-200 text-lg leading-relaxed">
+                  Guess the One Piece character name in 6 tries with helpful clues. Use your knowledge of character names and spelling!
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="grid grid-cols-2 gap-4 text-center">
+                  <div className="bg-green-500/30 rounded-lg p-3 border border-green-400/30">
+                    <div className="text-orange-300 font-bold text-lg">Medium</div>
+                    <div className="text-gray-300 text-sm">Difficulty</div>
+                  </div>
+                  <div className="bg-green-500/30 rounded-lg p-3 border border-green-400/30">
+                    <div className="text-green-300 font-bold text-lg">Puzzle</div>
+                    <div className="text-gray-300 text-sm">5-15 min</div>
+                  </div>
+                </div>
+                <Button asChild className="w-full bg-green-600 hover:bg-green-700 shadow-lg hover:shadow-green-500/25 transition-all duration-300 py-6 text-lg border border-green-400/20">
+                  <Link href="/games/anime-wordle">
+                    <Play className="mr-3 h-6 w-6" />
+                    Play Wordle
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Simple Footer Section */}
+      <section className="py-16 px-4 relative z-10">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="bg-gradient-to-br from-purple-800/30 to-blue-800/30 rounded-3xl p-8 border border-purple-500/30 backdrop-blur-sm">
+            <h2 className="text-3xl font-bold text-white mb-4">
+              Ready to Test Your Knowledge?
+            </h2>
+            <p className="text-lg text-gray-300 mb-6">
+              Choose any game above and start your One Piece challenge now!
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button asChild size="lg" className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 shadow-lg hover:shadow-purple-500/25 transition-all duration-300">
+                <Link href="/games">
+                  <Gamepad2 className="mr-2 h-5 w-5" />
+                  View All Games
+                </Link>
+              </Button>
+              <Button asChild variant="outline" size="lg" className="border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white shadow-lg hover:shadow-blue-500/25 transition-all duration-300">
+                <Link href="/personajes">
+                  <Users className="mr-2 h-5 w-5" />
+                  Browse Characters
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>

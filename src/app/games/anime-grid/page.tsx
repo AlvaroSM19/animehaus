@@ -188,7 +188,7 @@ export default function AnimeGridGame() {
                   Back
                 </Button>
               </Link>
-              <h1 className="text-2xl font-bold text-yellow-400">AnimeHaus - Cuadrícula de Personajes</h1>
+              <h1 className="text-2xl font-bold text-yellow-400">AnimeHaus - Character Grid</h1>
             </div>
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-2 text-white">
@@ -380,7 +380,7 @@ export default function AnimeGridGame() {
                     Buscar Personaje
                   </CardTitle>
                   <p className="text-sm text-slate-300">
-                    Debe coincidir: <strong className="text-yellow-400">{rowConditions[selectedCell?.row || 0]?.display}</strong> Y <strong className="text-yellow-400">{colConditions[selectedCell?.col || 0]?.display}</strong>
+                    Must match: <strong className="text-yellow-400">{rowConditions[selectedCell?.row || 0]?.display}</strong> AND <strong className="text-yellow-400">{colConditions[selectedCell?.col || 0]?.display}</strong>
                   </p>
                 </CardHeader>
                 <CardContent>

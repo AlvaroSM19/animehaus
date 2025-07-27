@@ -106,7 +106,7 @@ export default function SignInPage() {
             
             <div className="text-center">
               <Link href="/" className="text-purple-400 hover:text-purple-300 text-sm">
-                ¿Prefieres jugar sin cuenta? Continúa como invitado
+                Prefer to play without an account? Continue as guest
               </Link>
             </div>
           </CardContent>

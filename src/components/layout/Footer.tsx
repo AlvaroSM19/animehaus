@@ -4,16 +4,16 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const quickLinks = [
-    { name: 'Inicio', href: '/' },
-    { name: 'Sobre Nosotros', href: '/about' },
-    { name: 'Contacto', href: '/contact' },
-    { name: 'Términos', href: '/terms' },
-    { name: 'Privacidad', href: '/privacy' },
+    { name: 'Home', href: '/' },
+    { name: 'About Us', href: '/about' },
+    { name: 'Contact', href: '/contact' },
+    { name: 'Terms', href: '/terms' },
+    { name: 'Privacy', href: '/privacy' },
   ];
 
   const games = [
     { name: 'Anime Impostor', href: '/games/impostor' },
-    { name: 'Cuadrícula Anime', href: '/games/anime-grid' },
+    { name: 'Anime Grid', href: '/games/anime-grid' },
     { name: 'Anime Wordle', href: '/games/anime-wordle' },
   ];
 
@@ -31,23 +31,22 @@ export default function Footer() {
           {/* Brand Section */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <span className="text-2xl">�</span>
               <span className="text-xl font-bold bg-gradient-to-r from-anime-sakura to-anime-gold bg-clip-text text-transparent">
                 AnimeHaus
               </span>
             </div>
             <p className="text-gray-400 text-sm">
-              Tu casa del anime. Explora, juega y desafía tu conocimiento con mini-juegos 
-              únicos basados en One Piece.
+              Your anime home. Explore, play and challenge your knowledge with unique mini-games 
+              based on One Piece.
             </p>
             <div className="text-xs text-gray-500">
-              © {currentYear} AnimeHaus. Todos los derechos reservados.
+              © {currentYear} AnimeHaus. All rights reserved.
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Enlaces Rápidos</h3>
+            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.name}>
@@ -64,7 +63,7 @@ export default function Footer() {
 
           {/* Games */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Mini-Juegos</h3>
+            <h3 className="text-lg font-semibold mb-4">Mini-Games</h3>
             <ul className="space-y-2">
               {games.map((game) => (
                 <li key={game.name}>
@@ -81,7 +80,7 @@ export default function Footer() {
 
           {/* Social & Contact */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Síguenos</h3>
+            <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
             <div className="space-y-3">
               {socialLinks.map((social) => (
                 <a
@@ -108,12 +107,12 @@ export default function Footer() {
         <div className="mt-8 pt-8 border-t border-gray-800">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-xs text-gray-500">
-              AnimeQuiz Hub utiliza imágenes de anime y personajes únicamente con fines educativos y de entretenimiento.
-              No poseemos derechos sobre las imágenes utilizadas.
+              AnimeHaus uses anime images and characters for educational and entertainment purposes only.
+              We do not own rights to the images used.
             </div>
             
             <div className="flex items-center space-x-4 text-xs text-gray-500">
-              <span>Hecho con ❤️ para la comunidad anime</span>
+              <span>Made with ❤️ for the anime community</span>
             </div>
           </div>
         </div>

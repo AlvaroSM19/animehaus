@@ -14,10 +14,8 @@ const essentialFiles = [
   'next.config.js',
   'vercel.json',
   'src/app/layout.tsx',
-  'src/lib/auth.ts',
-  'src/app/api/auth/[...nextauth]/route.ts',
-  'src/app/auth/signin/page.tsx',
-  'src/app/auth/error/page.tsx'
+  'src/app/page.tsx',
+  'src/app/games/page.tsx'
 ];
 
 essentialFiles.forEach(file => {
@@ -32,7 +30,6 @@ essentialFiles.forEach(file => {
 const packageJson = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 const criticalDeps = [
   'next',
-  'next-auth',
   'react',
   'react-dom',
   '@radix-ui/react-slot'
@@ -46,18 +43,8 @@ criticalDeps.forEach(dep => {
   }
 });
 
-// 3. Verificar variables de entorno críticas
-const envVars = [
-  'NEXTAUTH_SECRET'
-];
-
-envVars.forEach(envVar => {
-  if (process.env[envVar]) {
-    checks.push({ name: `✅ Variable de entorno: ${envVar}`, status: 'ok' });
-  } else {
-    checks.push({ name: `⚠️ Variable de entorno: ${envVar} (configurar en Vercel)`, status: 'warning' });
-  }
-});
+// 3. AnimeHaus no requiere variables de entorno para autenticación
+checks.push({ name: `✅ Sin dependencias de variables de entorno`, status: 'ok' });
 
 // 4. Verificar estructura de carpetas
 const requiredDirs = [

@@ -284,7 +284,7 @@ export default function AnimeWordle() {
                   <div className="text-gray-300 space-y-2">
                     <p><strong>Anime:</strong> {gameState.targetCharacter.anime}</p>
                     <p><strong>Role:</strong> {gameState.targetCharacter.role}</p>
-                    <p><strong>Recompensa:</strong> {gameState.targetCharacter.recompensa ? `${gameState.targetCharacter.recompensa.toLocaleString()} ฿` : 'Sin recompensa'}</p>
+                    <p><strong>Bounty:</strong> {gameState.targetCharacter.recompensa ? `${gameState.targetCharacter.recompensa.toLocaleString()} ฿` : 'No bounty'}</p>
                     <p><strong>Tripulación:</strong> {gameState.targetCharacter.crew}</p>
                     <p><strong>Letters:</strong> {targetName.length}</p>
                   </div>

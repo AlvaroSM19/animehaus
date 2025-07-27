@@ -139,10 +139,10 @@ export default function PersonajesPage() {
               <Link href="/">
                 <Button className="text-white hover:bg-white/10">
                   <ArrowLeft className="w-4 h-4 mr-2" />
-                  Inicio
+                  Home
                 </Button>
               </Link>
-              <h1 className="text-2xl font-bold text-yellow-400">AnimeHaus - Personajes de One Piece</h1>
+              <h1 className="text-2xl font-bold text-yellow-400">AnimeHaus - One Piece Characters</h1>
             </div>
             
             <div className="flex items-center gap-4 text-white text-sm">
@@ -309,7 +309,7 @@ export default function PersonajesPage() {
                       ? 'bg-yellow-600 text-black' 
                       : 'bg-slate-600 text-white'
                   }`}>
-                    {character.role === 'main' ? 'Principal' : 'Secundario'}
+                    {character.role === 'main' ? 'Main' : 'Supporting'}
                   </span>
                 </div>
 
