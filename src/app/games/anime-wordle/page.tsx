@@ -216,7 +216,7 @@ export default function AnimeWordle() {
   }
 
   const targetName = getTargetName(gameState.targetCharacter);
-  const maxLength = Math.min(12, Math.max(6, targetName.length)); // Limit to 12 characters max
+  const maxLength = targetName.length; // Use exact character name length
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900">
