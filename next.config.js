@@ -57,10 +57,6 @@ const nextConfig = {
   compress: true,
   poweredByHeader: false,
   generateEtags: false,
-  experimental: {
-    optimizeCss: true,
-    scrollRestoration: true,
-  },
 };
 
 module.exports = nextConfig;

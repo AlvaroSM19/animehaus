@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Play, Users, Gamepad2, Crown, Target, Brain, TrendingUp, Award } from 'lucide-react';
+import { Play, Users, Gamepad2, Crown, Brain, TrendingUp, Award } from 'lucide-react';
 import type { Metadata } from 'next';
 import StructuredData, { websiteStructuredData, organizationStructuredData } from '@/components/seo/StructuredData';
 

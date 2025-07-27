@@ -21,8 +21,7 @@ export const metadata: Metadata = {
   authors: [{ name: 'AnimeHaus', url: 'https://animehaus.vercel.app' }],
   creator: 'AnimeHaus',
   publisher: 'AnimeHaus',
-  viewport: 'width=device-width, initial-scale=1',
-  themeColor: '#FFB7C5',
+  metadataBase: new URL('https://animehaus.vercel.app'),
   manifest: '/manifest.json',
   icons: {
     icon: '/favicon.ico',
@@ -67,6 +66,14 @@ export const metadata: Metadata = {
   classification: 'Anime Quiz Games',
   referrer: 'origin-when-cross-origin',
 };
+
+export function generateViewport() {
+  return {
+    width: 'device-width',
+    initialScale: 1,
+    themeColor: '#FFB7C5',
+  };
+}
 
 export default function RootLayout({
   children,
