@@ -47,8 +47,14 @@ export default function AnimeWordle() {
   }, [isGameActive, timeLeft, gameState?.gameStatus]);
 
   const initializeGame = () => {
-    // Select a random character
-    const randomCharacter = ANIME_CHARACTERS[Math.floor(Math.random() * ANIME_CHARACTERS.length)];
+    // Filter characters with names that are good for Wordle (3-12 characters)
+    const suitableCharacters = ANIME_CHARACTERS.filter(char => {
+      const normalizedName = normalizeString(char.name);
+      return normalizedName.length >= 3 && normalizedName.length <= 12;
+    });
+    
+    // Select a random character from suitable ones
+    const randomCharacter = suitableCharacters[Math.floor(Math.random() * suitableCharacters.length)];
     
     setGameState({
       targetCharacter: randomCharacter,
@@ -108,9 +114,13 @@ export default function AnimeWordle() {
   };
 
   const handleGuessSubmit = () => {
-    if (!gameState || gameState.currentGuess.length < 3) return;
-
+    if (!gameState) return;
+    
     const targetName = getTargetName(gameState.targetCharacter);
+    
+    // Require exact length match
+    if (gameState.currentGuess.length !== targetName.length) return;
+
     const normalizedGuess = normalizeString(gameState.currentGuess);
     
     const newGuesses = [...gameState.guesses, gameState.currentGuess];
@@ -136,6 +146,8 @@ export default function AnimeWordle() {
   const handleKeyPress = (key: string) => {
     if (!gameState || gameState.gameStatus !== 'playing') return;
 
+    const targetName = getTargetName(gameState.targetCharacter);
+
     if (key === 'ENTER') {
       handleGuessSubmit();
     } else if (key === 'BACKSPACE') {
@@ -143,7 +155,7 @@ export default function AnimeWordle() {
         ...gameState,
         currentGuess: gameState.currentGuess.slice(0, -1)
       });
-    } else if (key.match(/^[a-zA-Z]$/) && gameState.currentGuess.length < 15) {
+    } else if (key.match(/^[a-zA-Z]$/) && gameState.currentGuess.length < targetName.length) {
       setGameState({
         ...gameState,
         currentGuess: gameState.currentGuess + key.toUpperCase()
@@ -204,7 +216,7 @@ export default function AnimeWordle() {
   }
 
   const targetName = getTargetName(gameState.targetCharacter);
-  const maxLength = Math.max(6, targetName.length);
+  const maxLength = Math.min(12, Math.max(6, targetName.length)); // Limit to 12 characters max
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900">
