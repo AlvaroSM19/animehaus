@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { useSession, signOut } from 'next-auth/react';
 import { Button } from '@/components/ui/button';
 import { 
   Menu, 
@@ -12,9 +11,7 @@ import {
   Trophy,
   Settings,
   User,
-  Users,
-  LogIn,
-  LogOut
+  Users
 } from 'lucide-react';
 
 const navigation = [
@@ -33,7 +30,6 @@ const games = [
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isGamesMenuOpen, setIsGamesMenuOpen] = useState(false);
-  const { data: session, status } = useSession();
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -101,42 +97,9 @@ export default function Header() {
             <Button variant="ghost" size="sm">
               <Settings className="h-4 w-4" />
             </Button>
-            
-            {status === 'loading' ? (
-              <div className="w-8 h-8 rounded-full bg-gray-200 animate-pulse"></div>
-            ) : session ? (
-              <div className="flex items-center space-x-2">
-                <Button variant="ghost" size="sm" className="flex items-center space-x-2">
-                  {session.user?.image ? (
-                    <img 
-                      src={session.user.image} 
-                      alt={session.user.name || 'Usuario'} 
-                      className="w-6 h-6 rounded-full"
-                    />
-                  ) : (
-                    <User className="h-4 w-4" />
-                  )}
-                  <span className="text-sm">{session.user?.name || 'Usuario'}</span>
-                </Button>
-                <Button 
-                  variant="outline" 
-                  size="sm"
-                  onClick={() => signOut({ callbackUrl: '/' })}
-                  className="flex items-center space-x-1"
-                >
-                  <LogOut className="h-4 w-4" />
-                  <span>Salir</span>
-                </Button>
-              </div>
-            ) : (
-              <Link href="/auth/signin">
-                <Button variant="outline" size="sm" className="flex items-center space-x-1">
-                  <LogIn className="h-4 w-4" />
-                  <span>Iniciar Sesión</span>
-                </Button>
-              </Link>
-            )}
-            
+            <Button variant="ghost" size="sm">
+              <User className="h-4 w-4" />
+            </Button>
             <Button variant="anime" size="sm">
               Jugar Ahora
             </Button>
@@ -196,44 +159,10 @@ export default function Header() {
                   <Settings className="h-4 w-4 mr-2" />
                   Configuración
                 </Button>
-                
-                {status === 'loading' ? (
-                  <div className="w-full h-10 bg-gray-200 animate-pulse rounded"></div>
-                ) : session ? (
-                  <>
-                    <Button variant="ghost" className="w-full justify-start">
-                      {session.user?.image ? (
-                        <img 
-                          src={session.user.image} 
-                          alt={session.user.name || 'Usuario'} 
-                          className="w-4 h-4 rounded-full mr-2"
-                        />
-                      ) : (
-                        <User className="h-4 w-4 mr-2" />
-                      )}
-                      {session.user?.name || 'Mi Perfil'}
-                    </Button>
-                    <Button 
-                      variant="outline" 
-                      className="w-full justify-start"
-                      onClick={() => {
-                        setIsMenuOpen(false);
-                        signOut({ callbackUrl: '/' });
-                      }}
-                    >
-                      <LogOut className="h-4 w-4 mr-2" />
-                      Cerrar Sesión
-                    </Button>
-                  </>
-                ) : (
-                  <Link href="/auth/signin" onClick={() => setIsMenuOpen(false)}>
-                    <Button variant="outline" className="w-full justify-start">
-                      <LogIn className="h-4 w-4 mr-2" />
-                      Iniciar Sesión
-                    </Button>
-                  </Link>
-                )}
-                
+                <Button variant="ghost" className="w-full justify-start">
+                  <User className="h-4 w-4 mr-2" />
+                  Perfil
+                </Button>
                 <Button variant="anime" className="w-full">
                   Jugar Ahora
                 </Button>
