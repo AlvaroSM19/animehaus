@@ -95,7 +95,7 @@ export default function Footer() {
             </div>
             
             <div className="mt-6">
-              <h4 className="text-sm font-medium mb-2">Contacto</h4>
+              <h4 className="text-sm font-medium mb-2">Contact</h4>
               <p className="text-gray-400 text-xs">
                 animequizhub@gmail.com
               </p>

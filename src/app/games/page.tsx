@@ -256,24 +256,18 @@ export default function GamesPage() {
                 {/* Action Button */}
                 <div className="flex space-x-3">
                   {game.status === 'available' ? (
-                    <Button className="flex-1" asChild>
+                    <Button className="w-full" asChild>
                       <Link href={game.href}>
                         <Play className="mr-2 h-4 w-4" />
                         Play Now
                       </Link>
                     </Button>
                   ) : (
-                    <Button className="flex-1" disabled>
+                    <Button className="w-full" disabled>
                       <Clock className="mr-2 h-4 w-4" />
                       Coming Soon
                     </Button>
                   )}
-                  
-                  <Button variant="outline" asChild>
-                    <Link href={`${game.href}/tutorial`}>
-                      Tutorial
-                    </Link>
-                  </Button>
                 </div>
               </CardContent>
             </Card>

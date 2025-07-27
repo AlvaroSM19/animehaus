@@ -101,14 +101,14 @@ export function getCharactersByAnime(characters: any[], animeId: string): any[] 
 
 export function getRandomAnimeQuote(): string {
   const quotes = [
-    "¡Dattebayo! - Naruto",
-    "¡Voy a ser el Rey de los Piratas! - Luffy",
+    "Believe it! - Naruto",
+    "I'm gonna be King of the Pirates! - Luffy",
     "Plus Ultra! - All Might",
-    "¡Sasageyo! - Erwin Smith",
+    "Dedicate your hearts! - Erwin Smith",
     "Muda muda muda! - Dio",
-    "¡Kamehameha! - Goku",
-    "¡Bankai! - Ichigo",
-    "¡Alchemy is the science of understanding! - Edward Elric"
+    "Kamehameha! - Goku",
+    "Bankai! - Ichigo",
+    "Alchemy is the science of understanding! - Edward Elric"
   ];
   
   return quotes[Math.floor(Math.random() * quotes.length)];

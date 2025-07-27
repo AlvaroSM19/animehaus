@@ -84,15 +84,15 @@ const IMPOSTOR_THEMES = [
     name: 'High Bounty',
     description: 'Characters with bounties over 1 billion berries',
     getGameData: () => {
-      const highBountyChars = ANIME_CHARACTERS.filter(char => char.recompensa && char.recompensa >= 1000000000);
-      const lowBountyChars = ANIME_CHARACTERS.filter(char => !char.recompensa || char.recompensa < 500000000);
+      const highBountyChars = ANIME_CHARACTERS.filter(char => char.bounty && char.bounty >= 1000000000);
+      const lowBountyChars = ANIME_CHARACTERS.filter(char => !char.bounty || char.bounty < 500000000);
       
       const correctChars = highBountyChars.slice(0, 4);
       const impostorChar = lowBountyChars[Math.floor(Math.random() * lowBountyChars.length)];
       
       const allChars = [...correctChars, impostorChar];
       const shuffled = allChars.sort(() => Math.random() - 0.5);
-      const impostorIndex = shuffled.findIndex(char => !char.recompensa || char.recompensa < 500000000);
+      const impostorIndex = shuffled.findIndex(char => !char.bounty || char.bounty < 500000000);
       
       return {
         theme: 'High Bounty Characters (1B+)',
@@ -106,15 +106,15 @@ const IMPOSTOR_THEMES = [
     name: 'Devil Fruit Users',
     description: 'Characters with Devil Fruit powers',
     getGameData: () => {
-      const fruitUsers = ANIME_CHARACTERS.filter(char => char.fruta_diablo && char.fruta_diablo !== null);
-      const nonFruitUsers = ANIME_CHARACTERS.filter(char => !char.fruta_diablo || char.fruta_diablo === null);
+      const fruitUsers = ANIME_CHARACTERS.filter(char => char.devilFruit && char.devilFruit !== null);
+      const nonFruitUsers = ANIME_CHARACTERS.filter(char => !char.devilFruit || char.devilFruit === null);
       
       const correctChars = fruitUsers.slice(0, 4);
       const impostorChar = nonFruitUsers[Math.floor(Math.random() * nonFruitUsers.length)];
       
       const allChars = [...correctChars, impostorChar];
       const shuffled = allChars.sort(() => Math.random() - 0.5);
-      const impostorIndex = shuffled.findIndex(char => !char.fruta_diablo || char.fruta_diablo === null);
+      const impostorIndex = shuffled.findIndex(char => !char.devilFruit || char.devilFruit === null);
       
       return {
         theme: 'Devil Fruit Users',
@@ -128,15 +128,15 @@ const IMPOSTOR_THEMES = [
     name: 'Haki Users',
     description: 'Characters who can use Haki',
     getGameData: () => {
-      const hakiUsers = ANIME_CHARACTERS.filter(char => char.tipo_haki.length > 0);
-      const nonHakiUsers = ANIME_CHARACTERS.filter(char => char.tipo_haki.length === 0);
+      const hakiUsers = ANIME_CHARACTERS.filter(char => char.hakiTypes.length > 0);
+      const nonHakiUsers = ANIME_CHARACTERS.filter(char => char.hakiTypes.length === 0);
       
       const correctChars = hakiUsers.slice(0, 4);
       const impostorChar = nonHakiUsers[Math.floor(Math.random() * nonHakiUsers.length)];
       
       const allChars = [...correctChars, impostorChar];
       const shuffled = allChars.sort(() => Math.random() - 0.5);
-      const impostorIndex = shuffled.findIndex(char => char.tipo_haki.length === 0);
+      const impostorIndex = shuffled.findIndex(char => char.hakiTypes.length === 0);
       
       return {
         theme: 'Haki Users',
@@ -150,21 +150,21 @@ const IMPOSTOR_THEMES = [
     name: 'East Blue Origins',
     description: 'Characters from East Blue',
     getGameData: () => {
-      const eastBlueChars = ANIME_CHARACTERS.filter(char => char.origen.includes('East Blue'));
-      const nonEastBlueChars = ANIME_CHARACTERS.filter(char => !char.origen.includes('East Blue'));
+      const eastBlueChars = ANIME_CHARACTERS.filter(char => char.origin.includes('East Blue'));
+      const nonEastBlueChars = ANIME_CHARACTERS.filter(char => !char.origin.includes('East Blue'));
       
       const correctChars = eastBlueChars.slice(0, 4);
       const impostorChar = nonEastBlueChars[Math.floor(Math.random() * nonEastBlueChars.length)];
       
       const allChars = [...correctChars, impostorChar];
       const shuffled = allChars.sort(() => Math.random() - 0.5);
-      const impostorIndex = shuffled.findIndex(char => !char.origen.includes('East Blue'));
+      const impostorIndex = shuffled.findIndex(char => !char.origin.includes('East Blue'));
       
       return {
         theme: 'East Blue Origins',
         characters: shuffled,
         impostorIndex,
-        explanation: `${impostorChar.name} is not from East Blue - they are from ${impostorChar.origen}`
+        explanation: `${impostorChar.name} is not from East Blue - they are from ${impostorChar.origin}`
       };
     }
   }
@@ -262,7 +262,7 @@ export default function ImpostorGame() {
           
           <div className="text-center">
             <h1 className="text-4xl font-bold text-yellow-400 mb-2">AnimeHaus - Impostor</h1>
-            <p className="text-purple-200">¡Encuentra el personaje que no pertenece al grupo!</p>
+            <p className="text-purple-200">Find the character that doesn't belong to the group!</p>
           </div>
           
           <Button 

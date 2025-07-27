@@ -98,7 +98,7 @@ export default function AnimeGridGame() {
     return checkCondition(character, rowCondition) && checkCondition(character, colCondition);
   };
 
-  // Función para verificar si un personaje ya está siendo usado en el grid
+  // Function to verify if a character is already being used in the grid
   const isCharacterAlreadyUsed = (character: AnimeCharacter): boolean => {
     for (let row = 0; row < grid.length; row++) {
       for (let col = 0; col < grid[row].length; col++) {
@@ -111,7 +111,7 @@ export default function AnimeGridGame() {
   };
 
   const handleCellClick = (row: number, col: number) => {
-    // No permitir editar celdas que ya son correctas
+    // Don't allow editing cells that are already correct
     if (grid[row][col].isCorrect === true) {
       return;
     }
@@ -125,9 +125,9 @@ export default function AnimeGridGame() {
   const handleCharacterSelect = (character: AnimeCharacter) => {
     if (!selectedCell) return;
 
-    // Verificar si el personaje ya está siendo usado
+    // Verify if the character is already being used
     if (isCharacterAlreadyUsed(character)) {
-      return; // No permitir seleccionar personajes duplicados
+      return; // Don't allow selecting duplicate characters
     }
 
     const { row, col } = selectedCell;
@@ -215,14 +215,14 @@ export default function AnimeGridGame() {
                 className={`${showHints ? 'bg-yellow-500 text-black' : 'bg-slate-700 text-white'} hover:bg-yellow-400 hover:text-black`}
               >
                 <Info className="w-4 h-4 mr-2" />
-                Pistas
+                Hints
               </Button>
               <Button
                 onClick={resetGame}
                 className="bg-purple-600 hover:bg-purple-700 text-white"
               >
                 <RotateCcw className="w-4 h-4 mr-2" />
-                Nuevo
+                New Game
               </Button>
             </div>
           </div>
@@ -236,13 +236,13 @@ export default function AnimeGridGame() {
           <Card className="mb-8 bg-slate-800/90 border-yellow-400/30">
             <CardHeader>
               <CardTitle className="text-yellow-400 text-center text-xl">
-                ¡Completa la Cuadrícula!
+                Complete the Grid!
               </CardTitle>
               <p className="text-slate-200 text-center">
-                Haz clic en cada celda y busca un personaje que cumpla las condiciones de fila y columna
+                Click on each cell and search for a character that meets the row and column conditions
               </p>
               <p className="text-slate-300 text-center text-sm">
-                Respuestas correctas: +100 puntos | Respuestas incorrectas: -25 puntos
+                Correct answers: +100 points | Incorrect answers: -25 points
               </p>
             </CardHeader>
           </Card>
@@ -255,7 +255,7 @@ export default function AnimeGridGame() {
               
               {/* Column headers */}
               {colConditions.map((condition, idx) => (
-                <div key={idx} className="bg-yellow-600 text-slate-900 p-3 rounded-lg text-center font-bold text-sm">
+                <div key={idx} className="bg-yellow-500 text-black p-3 rounded-lg text-center font-bold text-sm flex items-center justify-center">
                   {condition.display}
                 </div>
               ))}
@@ -264,7 +264,7 @@ export default function AnimeGridGame() {
               {grid.map((row, rowIdx) => (
                 <div key={rowIdx} className="contents">
                   {/* Row header */}
-                  <div className="bg-purple-600 text-white p-3 rounded-lg text-center font-bold text-sm">
+                  <div className="bg-yellow-500 text-black p-3 rounded-lg text-center font-bold text-sm flex items-center justify-center">
                     {rowConditions[rowIdx]?.display}
                   </div>
                   
@@ -311,8 +311,8 @@ export default function AnimeGridGame() {
                           )}
                         </div>
                       ) : (
-                        <div className="h-full flex items-center justify-center">
-                          <Search className="w-6 h-6 text-gray-400" />
+                        <div className="h-full flex items-center justify-center bg-gradient-to-br from-purple-600 to-purple-800 rounded-lg border-2 border-yellow-400/30 shadow-lg hover:border-yellow-400/50 hover:shadow-yellow-400/20 transition-all duration-300">
+                          <Search className="w-8 h-8 text-yellow-400 drop-shadow-lg animate-pulse" />
                         </div>
                       )}
                     </button>
@@ -329,7 +329,7 @@ export default function AnimeGridGame() {
                 <CardHeader>
                   <CardTitle className="text-yellow-400 flex items-center gap-2">
                     <Info className="w-5 h-5" />
-                    Estadísticas de las Celdas
+                    Cell Statistics
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -337,7 +337,7 @@ export default function AnimeGridGame() {
                     <div></div>
                     {colConditions.map((colCondition, colIdx) => (
                       <div key={colIdx} className="text-center">
-                        <div className="bg-yellow-600 text-black p-2 rounded text-sm font-bold">
+                        <div className="bg-yellow-500 text-black p-2 rounded text-sm font-bold text-center">
                           {colCondition.display}
                         </div>
                       </div>
@@ -345,7 +345,7 @@ export default function AnimeGridGame() {
                     
                     {rowConditions.map((rowCondition, rowIdx) => (
                       <div key={rowIdx} className="contents">
-                        <div className="bg-purple-600 text-white p-2 rounded text-sm font-bold">
+                        <div className="bg-yellow-500 text-black p-2 rounded text-sm font-bold text-center">
                           {rowCondition.display}
                         </div>
                         {colConditions.map((colCondition, colIdx) => {
@@ -353,7 +353,7 @@ export default function AnimeGridGame() {
                           return (
                             <div key={colIdx} className="bg-slate-700 p-3 rounded text-center">
                               <div className="text-green-400 font-bold text-lg">{stats.count}</div>
-                              <div className="text-xs text-slate-300">personajes</div>
+                              <div className="text-xs text-slate-300">characters</div>
                               {stats.examples.length > 0 && (
                                 <div className="text-xs text-slate-400 mt-1">
                                   Ej: {stats.examples.join(', ')}
@@ -377,7 +377,7 @@ export default function AnimeGridGame() {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2 text-slate-100">
                     <Search className="w-5 h-5 text-yellow-400" />
-                    Buscar Personaje
+                    Search Character
                   </CardTitle>
                   <p className="text-sm text-slate-300">
                     Must match: <strong className="text-yellow-400">{rowConditions[selectedCell?.row || 0]?.display}</strong> AND <strong className="text-yellow-400">{colConditions[selectedCell?.col || 0]?.display}</strong>
@@ -386,7 +386,7 @@ export default function AnimeGridGame() {
                 <CardContent>
                   <input
                     type="text"
-                    placeholder="Escribe el nombre del personaje..."
+                    placeholder="Type the character name..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="w-full p-3 border border-purple-400 bg-slate-700 text-slate-100 placeholder-slate-400 rounded-lg mb-4 focus:outline-none focus:border-yellow-400"

@@ -8,15 +8,15 @@ import { ArrowLeft, Search, Filter, Trophy, Users, MapPin, Zap } from 'lucide-re
 import Link from 'next/link';
 import { ANIME_CHARACTERS, AnimeCharacter } from '@/lib/anime-data-updated';
 import { 
-  getCharactersByRecompensa, 
-  getCharactersByOrigen, 
-  getCharactersByTipoHaki, 
-  getCharactersByFrutaDiablo,
-  getCharactersWithoutFrutaDiablo,
+  getCharactersByBounty, 
+  getCharactersByOrigin, 
+  getCharactersByHakiType, 
+  getCharactersByDevilFruit,
+  getCharactersWithoutDevilFruit,
   getCharacterStats 
 } from '@/lib/anime-data-updated';
 
-export default function PersonajesPage() {
+export default function CharactersPage() {
   const [filteredCharacters, setFilteredCharacters] = useState<AnimeCharacter[]>(ANIME_CHARACTERS);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedFilter, setSelectedFilter] = useState<string>('all');
@@ -27,24 +27,24 @@ export default function PersonajesPage() {
 
   // Filter options
   const filterOptions = [
-    { id: 'all', label: 'Todos los Personajes', icon: Users },
-    { id: 'main', label: 'Personajes Principales', icon: Trophy },
-    { id: 'high-bounty', label: 'Recompensas Altas (+1B)', icon: Trophy },
-    { id: 'devil-fruit', label: 'Usuarios de Fruta del Diablo', icon: Zap },
-    { id: 'no-devil-fruit', label: 'Sin Fruta del Diablo', icon: Users },
-    { id: 'haki-conquerer', label: 'Haki del Conquistador', icon: Zap },
-    { id: 'east-blue', label: 'Origen: East Blue', icon: MapPin },
-    { id: 'grand-line', label: 'Origen: Grand Line', icon: MapPin },
-    { id: 'wano', label: 'Origen: Wano', icon: MapPin },
+    { id: 'all', label: 'All Characters', icon: Users },
+    { id: 'main', label: 'Main Characters', icon: Trophy },
+    { id: 'high-bounty', label: 'High Bounties (+1B)', icon: Trophy },
+    { id: 'devil-fruit', label: 'Devil Fruit Users', icon: Zap },
+    { id: 'no-devil-fruit', label: 'No Devil Fruit', icon: Users },
+    { id: 'haki-conquerer', label: 'Conqueror Haki', icon: Zap },
+    { id: 'east-blue', label: 'Origin: East Blue', icon: MapPin },
+    { id: 'grand-line', label: 'Origin: Grand Line', icon: MapPin },
+    { id: 'wano', label: 'Origin: Wano', icon: MapPin },
   ];
 
   // Sort options
   const sortOptions = [
-    { id: 'name', label: 'Nombre A-Z' },
-    { id: 'bounty-desc', label: 'Recompensa (Mayor a Menor)' },
-    { id: 'bounty-asc', label: 'Recompensa (Menor a Mayor)' },
-    { id: 'crew', label: 'Tripulación' },
-    { id: 'origin', label: 'Origen' },
+    { id: 'name', label: 'Name A-Z' },
+    { id: 'bounty-desc', label: 'Bounty (High to Low)' },
+    { id: 'bounty-asc', label: 'Bounty (Low to High)' },
+    { id: 'crew', label: 'Crew' },
+    { id: 'origin', label: 'Origin' },
   ];
 
   // Apply filters
@@ -56,7 +56,7 @@ export default function PersonajesPage() {
       filtered = filtered.filter(char =>
         char.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         char.crew.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        char.origen.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        char.origin.toLowerCase().includes(searchQuery.toLowerCase()) ||
         char.description.toLowerCase().includes(searchQuery.toLowerCase())
       );
     }
@@ -67,25 +67,25 @@ export default function PersonajesPage() {
         filtered = filtered.filter(char => char.role === 'main');
         break;
       case 'high-bounty':
-        filtered = getCharactersByRecompensa(1000000000);
+        filtered = getCharactersByBounty(1000000000);
         break;
       case 'devil-fruit':
-        filtered = getCharactersByFrutaDiablo();
+        filtered = getCharactersByDevilFruit();
         break;
       case 'no-devil-fruit':
-        filtered = getCharactersWithoutFrutaDiablo();
+        filtered = getCharactersWithoutDevilFruit();
         break;
       case 'haki-conquerer':
-        filtered = getCharactersByTipoHaki('Conquistador');
+        filtered = getCharactersByHakiType('Conqueror');
         break;
       case 'east-blue':
-        filtered = getCharactersByOrigen('East Blue');
+        filtered = getCharactersByOrigin('East Blue');
         break;
       case 'grand-line':
-        filtered = getCharactersByOrigen('Grand Line');
+        filtered = getCharactersByOrigin('Grand Line');
         break;
       case 'wano':
-        filtered = getCharactersByOrigen('Wano');
+        filtered = getCharactersByOrigin('Wano');
         break;
     }
 
@@ -94,7 +94,7 @@ export default function PersonajesPage() {
       filtered = filtered.filter(char =>
         char.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         char.crew.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        char.origen.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        char.origin.toLowerCase().includes(searchQuery.toLowerCase()) ||
         char.description.toLowerCase().includes(searchQuery.toLowerCase())
       );
     }
@@ -105,16 +105,16 @@ export default function PersonajesPage() {
         filtered.sort((a, b) => a.name.localeCompare(b.name));
         break;
       case 'bounty-desc':
-        filtered.sort((a, b) => (b.recompensa || 0) - (a.recompensa || 0));
+        filtered.sort((a, b) => (b.bounty || 0) - (a.bounty || 0));
         break;
       case 'bounty-asc':
-        filtered.sort((a, b) => (a.recompensa || 0) - (b.recompensa || 0));
+        filtered.sort((a, b) => (a.bounty || 0) - (b.bounty || 0));
         break;
       case 'crew':
         filtered.sort((a, b) => a.crew.localeCompare(b.crew));
         break;
       case 'origin':
-        filtered.sort((a, b) => a.origen.localeCompare(b.origen));
+        filtered.sort((a, b) => a.origin.localeCompare(b.origin));
         break;
     }
 
@@ -122,7 +122,7 @@ export default function PersonajesPage() {
   }, [searchQuery, selectedFilter, sortBy]);
 
   const formatBounty = (bounty: number | null): string => {
-    if (!bounty) return 'Sin recompensa';
+    if (!bounty) return 'No bounty';
     if (bounty >= 1000000000) return `${(bounty / 1000000000).toFixed(1)}B ฿`;
     if (bounty >= 1000000) return `${(bounty / 1000000).toFixed(0)}M ฿`;
     if (bounty >= 1000) return `${(bounty / 1000).toFixed(0)}K ฿`;
@@ -150,13 +150,13 @@ export default function PersonajesPage() {
                 Total: {stats.total}
               </div>
               <div className="bg-green-700 px-3 py-1 rounded">
-                Con Haki: {stats.withHaki}
+                With Haki: {stats.withHaki}
               </div>
               <div className="bg-purple-700 px-3 py-1 rounded">
-                Frutas del Diablo: {stats.withFrutaDiablo}
+                Devil Fruits: {stats.withDevilFruit}
               </div>
               <div className="bg-yellow-700 px-3 py-1 rounded">
-                Con Recompensa: {stats.withRecompensa}
+                With Bounty: {stats.withBounty}
               </div>
             </div>
           </div>
@@ -172,7 +172,7 @@ export default function PersonajesPage() {
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-4 h-4" />
               <input
                 type="text"
-                placeholder="Buscar personajes..."
+                placeholder="Search characters..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full pl-10 pr-4 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-yellow-400"
@@ -202,7 +202,7 @@ export default function PersonajesPage() {
             </select>
 
             <div className="text-slate-300 text-sm">
-              {filteredCharacters.length} personajes
+              {filteredCharacters.length} characters
             </div>
           </div>
 
@@ -259,38 +259,38 @@ export default function PersonajesPage() {
               <CardContent className="space-y-3">
                 {/* Crew */}
                 <div className="text-center">
-                  <div className="text-xs text-slate-400">Tripulación</div>
+                  <div className="text-xs text-slate-400">Crew</div>
                   <div className="text-sm text-white font-medium">{character.crew}</div>
                 </div>
 
                 {/* Bounty */}
                 <div className="text-center">
-                  <div className="text-xs text-slate-400">Recompensa</div>
-                  <div className={`text-sm font-bold ${character.recompensa ? 'text-green-400' : 'text-slate-500'}`}>
-                    {formatBounty(character.recompensa)}
+                  <div className="text-xs text-slate-400">Bounty</div>
+                  <div className={`text-sm font-bold ${character.bounty ? 'text-green-400' : 'text-slate-500'}`}>
+                    {formatBounty(character.bounty)}
                   </div>
                 </div>
 
                 {/* Origin */}
                 <div className="text-center">
-                  <div className="text-xs text-slate-400">Origen</div>
-                  <div className="text-sm text-purple-400">{character.origen}</div>
+                  <div className="text-xs text-slate-400">Origin</div>
+                  <div className="text-sm text-purple-400">{character.origin}</div>
                 </div>
 
                 {/* Devil Fruit */}
-                {character.fruta_diablo && (
+                {character.devilFruit && (
                   <div className="text-center">
-                    <div className="text-xs text-slate-400">Fruta del Diablo</div>
-                    <div className="text-sm text-red-400 font-medium">{character.fruta_diablo}</div>
+                    <div className="text-xs text-slate-400">Devil Fruit</div>
+                    <div className="text-sm text-red-400 font-medium">{character.devilFruit}</div>
                   </div>
                 )}
 
                 {/* Haki */}
-                {character.tipo_haki.length > 0 && (
+                {character.hakiTypes.length > 0 && (
                   <div className="text-center">
                     <div className="text-xs text-slate-400">Haki</div>
                     <div className="flex flex-wrap gap-1 justify-center">
-                      {character.tipo_haki.map(haki => (
+                      {character.hakiTypes.map(haki => (
                         <span 
                           key={haki}
                           className="text-xs bg-blue-600 text-white px-2 py-1 rounded"
@@ -325,7 +325,7 @@ export default function PersonajesPage() {
         {/* Empty State */}
         {filteredCharacters.length === 0 && (
           <div className="text-center py-12">
-            <div className="text-slate-400 text-lg mb-2">No se encontraron personajes</div>
+            <div className="text-slate-400 text-lg mb-2">No characters found</div>
             <div className="text-slate-500">Intenta cambiar los filtros o el término de búsqueda</div>
           </div>
         )}

@@ -258,7 +258,7 @@ export default function AnimeWordle() {
           {/* Instructions */}
           <Card className="mb-8 bg-black/30 border-white/20">
             <CardHeader>
-              <CardTitle className="text-white text-center text-xl">¡Adivina el Personaje de Anime!</CardTitle>
+              <CardTitle className="text-white text-center text-xl">Guess the Anime Character!</CardTitle>
               <p className="text-gray-300 text-center">
                 You have 6 attempts to guess the character's name
               </p>
@@ -296,8 +296,8 @@ export default function AnimeWordle() {
                   <div className="text-gray-300 space-y-2">
                     <p><strong>Anime:</strong> {gameState.targetCharacter.anime}</p>
                     <p><strong>Role:</strong> {gameState.targetCharacter.role}</p>
-                    <p><strong>Bounty:</strong> {gameState.targetCharacter.recompensa ? `${gameState.targetCharacter.recompensa.toLocaleString()} ฿` : 'No bounty'}</p>
-                    <p><strong>Tripulación:</strong> {gameState.targetCharacter.crew}</p>
+                    <p><strong>Bounty:</strong> {gameState.targetCharacter.bounty ? `${gameState.targetCharacter.bounty.toLocaleString()} ฿` : 'No bounty'}</p>
+                    <p><strong>Crew:</strong> {gameState.targetCharacter.crew}</p>
                     <p><strong>Letters:</strong> {targetName.length}</p>
                   </div>
                 )}

@@ -8,11 +8,11 @@ import { ArrowLeft, Search, Filter, Trophy, Users, MapPin, Zap } from 'lucide-re
 import Link from 'next/link';
 import { ANIME_CHARACTERS, AnimeCharacter } from '@/lib/anime-data-updated';
 import { 
-  getCharactersByRecompensa, 
-  getCharactersByOrigen, 
-  getCharactersByTipoHaki, 
-  getCharactersByFrutaDiablo,
-  getCharactersWithoutFrutaDiablo,
+  getCharactersByBounty, 
+  getCharactersByOrigin, 
+  getCharactersByHakiType, 
+  getCharactersByDevilFruit,
+  getCharactersWithoutDevilFruit,
   getCharacterStats 
 } from '@/lib/anime-data-updated';
 
@@ -56,7 +56,7 @@ export default function CharactersPage() {
       filtered = filtered.filter(char =>
         char.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         char.crew.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        char.origen.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        char.origin.toLowerCase().includes(searchQuery.toLowerCase()) ||
         char.description.toLowerCase().includes(searchQuery.toLowerCase())
       );
     }
@@ -67,25 +67,25 @@ export default function CharactersPage() {
         filtered = filtered.filter(char => char.role === 'main');
         break;
       case 'high-bounty':
-        filtered = getCharactersByRecompensa(1000000000);
+        filtered = getCharactersByBounty(1000000000);
         break;
       case 'devil-fruit':
-        filtered = getCharactersByFrutaDiablo();
+        filtered = getCharactersByDevilFruit();
         break;
       case 'no-devil-fruit':
-        filtered = getCharactersWithoutFrutaDiablo();
+        filtered = getCharactersWithoutDevilFruit();
         break;
       case 'haki-conquerer':
-        filtered = getCharactersByTipoHaki('Conquistador');
+        filtered = getCharactersByHakiType('Conqueror');
         break;
       case 'east-blue':
-        filtered = getCharactersByOrigen('East Blue');
+        filtered = getCharactersByOrigin('East Blue');
         break;
       case 'grand-line':
-        filtered = getCharactersByOrigen('Grand Line');
+        filtered = getCharactersByOrigin('Grand Line');
         break;
       case 'wano':
-        filtered = getCharactersByOrigen('Wano');
+        filtered = getCharactersByOrigin('Wano Country');
         break;
     }
 
@@ -94,7 +94,7 @@ export default function CharactersPage() {
       filtered = filtered.filter(char =>
         char.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         char.crew.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        char.origen.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        char.origin.toLowerCase().includes(searchQuery.toLowerCase()) ||
         char.description.toLowerCase().includes(searchQuery.toLowerCase())
       );
     }
@@ -105,16 +105,16 @@ export default function CharactersPage() {
         filtered.sort((a, b) => a.name.localeCompare(b.name));
         break;
       case 'bounty-desc':
-        filtered.sort((a, b) => (b.recompensa || 0) - (a.recompensa || 0));
+        filtered.sort((a, b) => (b.bounty || 0) - (a.bounty || 0));
         break;
       case 'bounty-asc':
-        filtered.sort((a, b) => (a.recompensa || 0) - (b.recompensa || 0));
+        filtered.sort((a, b) => (a.bounty || 0) - (b.bounty || 0));
         break;
       case 'crew':
         filtered.sort((a, b) => a.crew.localeCompare(b.crew));
         break;
       case 'origin':
-        filtered.sort((a, b) => a.origen.localeCompare(b.origen));
+        filtered.sort((a, b) => a.origin.localeCompare(b.origin));
         break;
     }
 
@@ -153,10 +153,10 @@ export default function CharactersPage() {
                 With Haki: {stats.withHaki}
               </div>
               <div className="bg-purple-700 px-3 py-1 rounded">
-                Devil Fruits: {stats.withFrutaDiablo}
+                Devil Fruits: {stats.withDevilFruit}
               </div>
               <div className="bg-yellow-700 px-3 py-1 rounded">
-                With Bounty: {stats.withRecompensa}
+                With Bounty: {stats.withBounty}
               </div>
             </div>
           </div>
@@ -266,31 +266,31 @@ export default function CharactersPage() {
                 {/* Bounty */}
                 <div className="text-center">
                   <div className="text-xs text-slate-400">Bounty</div>
-                  <div className={`text-sm font-bold ${character.recompensa ? 'text-green-400' : 'text-slate-500'}`}>
-                    {formatBounty(character.recompensa)}
+                  <div className={`text-sm font-bold ${character.bounty ? 'text-green-400' : 'text-slate-500'}`}>
+                    {formatBounty(character.bounty)}
                   </div>
                 </div>
 
                 {/* Origin */}
                 <div className="text-center">
                   <div className="text-xs text-slate-400">Origin</div>
-                  <div className="text-sm text-purple-400">{character.origen}</div>
+                  <div className="text-sm text-purple-400">{character.origin}</div>
                 </div>
 
                 {/* Devil Fruit */}
-                {character.fruta_diablo && (
+                {character.devilFruit && (
                   <div className="text-center">
                     <div className="text-xs text-slate-400">Devil Fruit</div>
-                    <div className="text-sm text-red-400 font-medium">{character.fruta_diablo}</div>
+                    <div className="text-sm text-red-400 font-medium">{character.devilFruit}</div>
                   </div>
                 )}
 
                 {/* Haki */}
-                {character.tipo_haki.length > 0 && (
+                {character.hakiTypes.length > 0 && (
                   <div className="text-center">
                     <div className="text-xs text-slate-400">Haki</div>
                     <div className="flex flex-wrap gap-1 justify-center">
-                      {character.tipo_haki.map(haki => (
+                      {character.hakiTypes.map(haki => (
                         <span 
                           key={haki}
                           className="text-xs bg-blue-600 text-white px-2 py-1 rounded"

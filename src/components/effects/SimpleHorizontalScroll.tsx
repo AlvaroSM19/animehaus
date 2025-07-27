@@ -67,8 +67,8 @@ export function SimpleHorizontalScroll({ children, className = '' }: SimpleHoriz
           className="flex gap-8 transition-transform duration-75 ease-out"
           style={{ 
             width: 'max-content',
-            paddingLeft: '60vw', // Aumentado para que el primer juego sea visible
-            paddingRight: '60vw' // Aumentado para que el último juego sea visible
+            paddingLeft: '60vw', // Increased so first game is visible
+            paddingRight: '60vw' // Increased so last game is visible
           }}
         >
           {children}

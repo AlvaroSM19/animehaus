@@ -78,7 +78,7 @@ export function HorizontalScrollSection({
       <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50">
         <div className="bg-black/30 backdrop-blur-md rounded-full px-6 py-3 border border-white/20">
           <div className="flex items-center gap-3 text-white text-sm">
-            <span className="font-medium">Explora los juegos</span>
+            <span className="font-medium">Explore Games</span>
             <div className="w-24 h-2 bg-white/20 rounded-full overflow-hidden">
               <div 
                 className="h-full bg-gradient-to-r from-anime-gold to-anime-electric transition-all duration-300 ease-out rounded-full"

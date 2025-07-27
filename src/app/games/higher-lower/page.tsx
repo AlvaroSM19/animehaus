@@ -12,7 +12,7 @@ interface Character {
   nombre: string;
   serie: string;
   imagen: string;
-  recompensa: number;
+  bounty: number;
 }
 
 interface GameState {
@@ -27,14 +27,14 @@ interface GameState {
   initialized: boolean;
 }
 
-// Filtrar personajes con recompensas válidas y convertir a número
+// Filter characters with valid bounties and convert to number
 const charactersWithBounty = ANIME_CHARACTERS.filter(char => {
-  return char.recompensa !== null && char.recompensa > 0;
+  return char.bounty !== null && char.bounty > 0;
 }).map(char => ({
   nombre: char.name,
   serie: char.anime,
   imagen: char.imageUrl,
-  recompensa: char.recompensa as number
+  bounty: char.bounty as number
 }));
 
 const getRandomCharacter = (excludeIds: string[] = []): Character => {
@@ -45,7 +45,7 @@ const getRandomCharacter = (excludeIds: string[] = []): Character => {
 };
 
 const formatBounty = (bounty: number): string => {
-  return bounty.toLocaleString('es-ES') + ' ₿';
+  return bounty.toLocaleString('en-US') + ' ₿';
 };
 
 export default function HigherLowerPage() {
@@ -64,7 +64,7 @@ export default function HigherLowerPage() {
     };
   });
 
-  // Cargar high score al inicio
+  // Load high score on start
   useEffect(() => {
     const savedHighScore = localStorage.getItem('higherLowerHighScore');
     if (savedHighScore) {
@@ -77,8 +77,8 @@ export default function HigherLowerPage() {
   const makeGuess = (guess: 'higher' | 'lower') => {
     if (gameState.isAnimating || gameState.gameOver || !gameState.initialized) return;
 
-    const leftBounty = gameState.leftCharacter.recompensa;
-    const rightBounty = gameState.rightCharacter.recompensa;
+    const leftBounty = gameState.leftCharacter.bounty;
+    const rightBounty = gameState.rightCharacter.bounty;
     
     let isCorrect = false;
     if (guess === 'higher' && rightBounty >= leftBounty) isCorrect = true;
@@ -143,7 +143,7 @@ export default function HigherLowerPage() {
   if (!gameState.initialized) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-orange-500 via-red-500 to-pink-600 flex items-center justify-center">
-        <div className="text-white text-xl">Cargando...</div>
+        <div className="text-white text-xl">Loading...</div>
       </div>
     );
   }
@@ -156,7 +156,7 @@ export default function HigherLowerPage() {
           <div className="flex items-center justify-between">
             <Link href="/games" className="flex items-center gap-2 text-white hover:text-orange-200 transition-colors">
               <ArrowLeft className="w-5 h-5" />
-              <span className="font-medium">Volver a Juegos</span>
+              <span className="font-medium">Back to Games</span>
             </Link>
             
             <div className="flex items-center gap-6">
@@ -198,11 +198,11 @@ export default function HigherLowerPage() {
                     {gameState.leftCharacter.serie}
                   </Badge>
                   
-                  {/* Mostrar recompensa SIEMPRE para el personaje izquierdo */}
+                  {/* Show bounty ALWAYS for left character */}
                   <div className="mt-4 p-3 bg-yellow-500/20 rounded-lg border border-yellow-400/30">
-                    <p className="text-yellow-200 text-sm">Recompensa:</p>
+                    <p className="text-yellow-200 text-sm">Bounty:</p>
                     <p className="text-yellow-100 font-bold text-lg">
-                      {formatBounty(gameState.leftCharacter.recompensa)}
+                      {formatBounty(gameState.leftCharacter.bounty)}
                     </p>
                   </div>
                 </div>
@@ -220,14 +220,14 @@ export default function HigherLowerPage() {
                     className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 text-lg font-semibold flex items-center justify-center gap-2 w-full"
                   >
                     <TrendingUp className="w-5 h-5" />
-                    MAYOR
+                    HIGHER
                   </Button>
                   <Button
                     onClick={() => makeGuess('lower')}
                     className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 text-lg font-semibold flex items-center justify-center gap-2 w-full"
                   >
                     <TrendingDown className="w-5 h-5" />
-                    MENOR
+                    LOWER
                   </Button>
                 </div>
               )}
@@ -243,7 +243,7 @@ export default function HigherLowerPage() {
                     {gameState.isCorrect ? 'CORRECT!' : 'WRONG!'}
                   </div>
                   <div className="text-white mt-2">
-                    {formatBounty(gameState.rightCharacter.recompensa)}
+                    {formatBounty(gameState.rightCharacter.bounty)}
                   </div>
                 </div>
               )}
@@ -266,7 +266,7 @@ export default function HigherLowerPage() {
                   </Badge>
                   
                   <div className="mt-4 p-3 bg-gray-500/20 rounded-lg border border-gray-400/30">
-                    <p className="text-gray-200 text-sm">Recompensa:</p>
+                    <p className="text-gray-200 text-sm">Bounty:</p>
                     <p className="text-gray-100 font-bold text-xl">Hidden</p>
                   </div>
                 </div>
@@ -277,19 +277,19 @@ export default function HigherLowerPage() {
           /* Game Over Screen */
           <div className="text-center max-w-md mx-auto">
             <Card className="bg-black/40 backdrop-blur-sm border-white/20 p-8">
-              <h2 className="text-3xl font-bold text-white mb-4">¡Juego Terminado!</h2>
+              <h2 className="text-3xl font-bold text-white mb-4">Game Over!</h2>
               <div className="space-y-4 mb-6">
                 <div>
-                  <p className="text-orange-200">Puntuación Final:</p>
+                  <p className="text-orange-200">Final Score:</p>
                   <p className="text-4xl font-bold text-yellow-400">{gameState.score}</p>
                 </div>
                 {gameState.score === gameState.highScore && gameState.score > 0 && (
                   <div className="p-3 bg-yellow-500/20 rounded-lg border border-yellow-400/30">
-                    <p className="text-yellow-200 font-semibold">¡Nuevo Récord! 🏆</p>
+                    <p className="text-yellow-200 font-semibold">New Record! 🏆</p>
                   </div>
                 )}
                 <div>
-                  <p className="text-orange-200">Mejor Puntuación:</p>
+                  <p className="text-orange-200">Best Score:</p>
                   <p className="text-2xl font-bold text-yellow-400">{gameState.highScore}</p>
                 </div>
               </div>
@@ -297,7 +297,7 @@ export default function HigherLowerPage() {
                 onClick={resetGame}
                 className="bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white px-8 py-3 text-lg font-semibold w-full"
               >
-                Jugar de Nuevo
+                Play Again
               </Button>
             </Card>
           </div>

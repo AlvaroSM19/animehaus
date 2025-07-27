@@ -13,7 +13,7 @@ import {
 const navigation = [
   { name: 'Home', href: '/', icon: Home },
   { name: 'Games', href: '/games', icon: Gamepad2 },
-  { name: 'Characters', href: '/personajes', icon: Users },
+  { name: 'Characters', href: '/characters', icon: Users },
 ];
 
 const games = [
