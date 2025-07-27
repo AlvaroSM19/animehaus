@@ -7,18 +7,10 @@ import {
   ArrowRight,
   Star,
   GamepadIcon,
-  TrendingUp
+  TrendingUp,
+  Clock,
+  Target
 } from 'lucide-react';
-import { 
-  EffectsProvider,
-  EnhancedCard,
-  EnhancedButton,
-  RevealSection,
-  EnhancedHero,
-  TypewriterText,
-  AnimatedSection,
-  SimpleHorizontalScroll
-} from '@/components/effects';
 
 const games = [
   {
@@ -30,7 +22,7 @@ const games = [
     players: '1 jugador',
     time: '5-10 min',
     href: '/games/impostor',
-    color: 'game-card-impostor',
+    color: 'from-red-600 to-pink-600',
     features: ['Interfaz circular', 'Feedback inmediato', 'Múltiples categorías']
   },
   {
@@ -42,7 +34,7 @@ const games = [
     players: '1 jugador',
     time: '15-20 min',
     href: '/games/anime-grid',
-    color: 'game-card-grid',
+    color: 'from-blue-600 to-purple-600',
     features: ['Búsqueda inteligente', 'Validación cruzada', 'Múltiples categorías']
   },
   {
@@ -54,7 +46,7 @@ const games = [
     players: '1 jugador',
     time: '3-5 min',
     href: '/games/anime-wordle',
-    color: 'game-card-wordle',
+    color: 'from-green-600 to-teal-600',
     features: ['Pistas visuales', 'Sistema de colores', 'Múltiples intentos']
   }
 ];
@@ -86,264 +78,176 @@ const stats = [
   }
 ];
 
-const featuredAnimes = [
-  { name: 'My Hero Academia', emoji: '🦸' },
-  { name: 'One Piece', emoji: '🏴‍☠️' },
-  { name: 'Naruto', emoji: '🥷' },
-  { name: 'Dragon Ball', emoji: '🐉' },
-  { name: 'Attack on Titan', emoji: '⚔️' },
-  { name: 'Demon Slayer', emoji: '🗡️' },
-];
-
 export default function HomePage() {
   return (
-    <EffectsProvider>
-      <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900">
-        {/* Hero Section */}
-        <EnhancedHero>
-          <div className="relative container mx-auto px-4 py-12 sm:py-16 lg:py-20">
-            <div className="text-center">
-              <AnimatedSection animation="scaleIn" delay={200}>
-                <div className="mb-6">
-                  <span className="text-5xl sm:text-6xl animate-bounce-slow">🎌</span>
-                </div>
-              </AnimatedSection>
+    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900">
+      {/* Hero Section */}
+      <section className="relative">
+        <div className="container mx-auto px-4 py-16 sm:py-20 lg:py-24">
+          <div className="text-center">
+            <div className="mb-8">
+              <span className="text-6xl sm:text-7xl lg:text-8xl">�</span>
+            </div>
+            
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6">
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
+                Anime
+              </span>
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
+                Haus
+              </span>
+            </h1>
+            
+            <p className="text-xl sm:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+              Tu casa del anime. Explora, juega y desafía tu conocimiento con mini-juegos únicos 
+              basados en One Piece.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Link 
+                href="/games"
+                className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold px-8 py-4 text-lg rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center"
+              >
+                <Play className="mr-2 h-5 w-5" />
+                Jugar Ahora
+              </Link>
               
-              <AnimatedSection animation="fadeInUp" delay={400}>
-                <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold mb-4">
-                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
-                    <TypewriterText text="Anime" speed={150} startDelay={600} />
-                  </span>
-                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
-                    <TypewriterText text="Haus" speed={150} startDelay={1800} />
-                  </span>
-                </h1>
-              </AnimatedSection>
-              
-              <AnimatedSection animation="fadeInUp" delay={800}>
-                <p className="text-lg sm:text-xl text-gray-300 mb-6 max-w-2xl mx-auto">
-                  Tu casa del anime. Explora, juega y desafía tu conocimiento con mini-juegos únicos 
-                  basados en One Piece y más universos anime por venir.
-                </p>
-              </AnimatedSection>
-              
-              <AnimatedSection animation="fadeInUp" delay={1000}>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                  <EnhancedButton 
-                    magnetic={true}
-                    glowing={true}
-                    className="bg-purple-600 hover:bg-purple-700 text-white font-bold px-8 py-4 text-lg rounded-lg transition-all duration-300"
-                  >
-                    <Link href="/games" className="flex items-center">
-                      <Play className="mr-2 h-5 w-5" />
-                      Jugar Ahora
-                    </Link>
-                  </EnhancedButton>
-                  
-                  <EnhancedButton 
-                    magnetic={true}
-                    className="bg-yellow-600 hover:bg-yellow-700 text-white font-bold px-8 py-4 text-lg rounded-lg transition-all duration-300"
-                  >
-                    <Link href="/personajes" className="flex items-center">
-                      <Users className="mr-2 h-5 w-5" />
-                      Ver Personajes
-                    </Link>
-                  </EnhancedButton>
-                  
-                  <EnhancedButton 
-                    magnetic={true}
-                    className="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4 text-lg rounded-lg transition-all duration-300"
-                  >
-                    <Link href="/about" className="flex items-center">
-                      Explorar Juegos
-                      <ArrowRight className="ml-2 h-5 w-5" />
-                    </Link>
-                  </EnhancedButton>
-                </div>
-              </AnimatedSection>
+              <Link 
+                href="/personajes"
+                className="bg-gradient-to-r from-yellow-600 to-orange-600 hover:from-yellow-700 hover:to-orange-700 text-white font-bold px-8 py-4 text-lg rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center"
+              >
+                <Users className="mr-2 h-5 w-5" />
+                Ver Personajes
+              </Link>
             </div>
           </div>
-        </EnhancedHero>
+        </div>
+      </section>
 
-        {/* Stats Section */}
-        <section className="py-8 bg-gray-50/5 backdrop-blur-sm">
-          <div className="container mx-auto px-4">
-            <RevealSection animation="fadeInUp" stagger={true}>
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-                {stats.map((stat, index) => {
-                  const Icon = stat.icon;
-                  return (
-                    <EnhancedCard 
-                      key={index} 
-                      className="text-center p-6" 
-                      floating={true}
-                      glowing={index % 2 === 0}
-                    >
-                      <div className="flex justify-center mb-4">
-                        <div className="p-3 bg-anime-gold/20 rounded-full">
-                          <Icon className="h-8 w-8 text-anime-gold" />
+      {/* Stats Section */}
+      <section className="py-16 bg-black/20 backdrop-blur-sm">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+            {stats.map((stat, index) => {
+              const Icon = stat.icon;
+              return (
+                <div 
+                  key={index} 
+                  className="text-center p-6 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300 transform hover:scale-105"
+                >
+                  <div className="flex justify-center mb-4">
+                    <div className="p-3 bg-yellow-500/20 rounded-full">
+                      <Icon className="h-8 w-8 text-yellow-400" />
+                    </div>
+                  </div>
+                  <div className="text-3xl font-bold text-white mb-2">{stat.value}</div>
+                  <div className="text-lg font-semibold text-gray-300 mb-1">{stat.label}</div>
+                  <div className="text-sm text-gray-400">{stat.description}</div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Games Section */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
+              Mini-Juegos Disponibles
+            </h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              Cada juego ofrece una experiencia única para poner a prueba tu conocimiento de anime
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {games.map((game) => (
+              <Link key={game.id} href={game.href} className="block group">
+                <div className={`h-full bg-gradient-to-br ${game.color} p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform group-hover:scale-105 border border-white/20`}>
+                  <CardHeader className="text-white relative p-0 mb-6">
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="text-5xl">{game.emoji}</div>
+                      <div className="text-right">
+                        <div className="bg-white/20 px-3 py-1 rounded-full text-sm mb-2">
+                          {game.difficulty}
+                        </div>
+                        <div className="flex items-center text-sm text-gray-200">
+                          <Clock className="mr-1 h-4 w-4" />
+                          {game.time}
                         </div>
                       </div>
-                      <div className="text-3xl font-bold text-white mb-2">{stat.value}</div>
-                      <div className="text-lg font-semibold text-gray-300 mb-1">{stat.label}</div>
-                      <div className="text-sm text-gray-400">{stat.description}</div>
-                    </EnhancedCard>
-                  );
-                })}
-              </div>
-            </RevealSection>
-          </div>
-        </section>        {/* Games Introduction */}
-        <section className="py-2 bg-gray-900/50 seamless-section">
-          <div className="container mx-auto px-4 text-center">
-            <RevealSection animation="fadeInUp">
-              <h2 className="text-2xl lg:text-3xl font-bold text-white mb-2 compact-title">
-                <TypewriterText text="Mini-Juegos Disponibles" speed={80} />
-              </h2>
-              <p className="text-base text-gray-300 max-w-2xl mx-auto mb-2 compact-text">
-                Cada juego ofrece una experiencia única para poner a prueba tu conocimiento de anime
-              </p>
-              <div className="flex items-center justify-center gap-2 text-anime-gold animate-bounce">
-                <ArrowRight className="h-4 w-4 rotate-90" />
-                <span className="text-sm font-medium">Scroll para explorar horizontalmente</span>
-                <ArrowRight className="h-4 w-4 rotate-90" />
-              </div>
-            </RevealSection>
-          </div>
-        </section>
-
-        {/* Games Section - Simple Horizontal Scroll */}
-        <SimpleHorizontalScroll className="bg-gradient-to-r from-gray-900 via-purple-900 to-gray-900 games-section-seamless compact-horizontal-scroll">
-          {games.map((game, index) => (
-            <div 
-              key={game.id} 
-              className={`w-80 h-96 mx-6 flex-shrink-0 large-game-card ${
-                index === 0 ? 'first-game-card' : ''
-              } ${
-                index === games.length - 1 ? 'last-game-card' : ''
-              }`}
-            >
-              <Link href={game.href} className="block h-full">
-                <EnhancedCard 
-                  className={`h-full ${game.color} p-0 overflow-hidden horizontal-game-card-enhanced transform hover:scale-105 transition-all duration-300 cursor-pointer`}
-                  floating={true}
-                  glowing={index % 3 === 0}
-                >
-                  <CardHeader className="text-white relative p-6">
-                    <div className="absolute top-4 right-4 text-4xl animate-bounce-slow">
-                      {game.emoji}
                     </div>
-                    <div className="pt-14">
-                      <CardTitle className="text-2xl mb-3 text-white">{game.title}</CardTitle>
-                      <CardDescription className="text-gray-200 text-base leading-relaxed">
-                        {game.description}
-                      </CardDescription>
-                    </div>
-                    <div className="flex justify-between items-center mt-4 text-sm">
-                      <span className="bg-white/20 px-3 py-1 rounded-full">
-                        {game.difficulty}
-                      </span>
-                      <span className="text-gray-300">{game.time}</span>
-                    </div>
+                    <CardTitle className="text-2xl mb-3 text-white">{game.title}</CardTitle>
+                    <CardDescription className="text-gray-100 text-base leading-relaxed">
+                      {game.description}
+                    </CardDescription>
                   </CardHeader>
                   
-                  <CardContent className="text-white space-y-4 flex-1 flex flex-col justify-between card-content p-6">
-                    <div>
-                      <div className="flex items-center text-sm text-gray-300 mb-4">
-                        <Users className="mr-2 h-4 w-4" />
-                        {game.players}
-                      </div>
-                      
-                      <div className="space-y-2">
-                        <h4 className="font-semibold text-sm">Características:</h4>
-                        <ul className="text-sm text-gray-300 space-y-2">
-                          {game.features.map((feature, idx) => (
-                            <li key={idx} className="flex items-center">
-                              <Star className="mr-2 h-3 w-3 text-anime-gold flex-shrink-0" />
-                              <span className="leading-tight">{feature}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+                  <CardContent className="text-white p-0">
+                    <div className="flex items-center text-sm text-gray-200 mb-4">
+                      <Users className="mr-2 h-4 w-4" />
+                      {game.players}
                     </div>
                     
-                    <div className="w-full bg-white text-black hover:bg-gray-200 hover:scale-105 mt-4 py-3 rounded-md flex items-center justify-center text-base font-medium transition-all duration-200">
+                    <div className="space-y-3">
+                      <h4 className="font-semibold text-sm flex items-center">
+                        <Target className="mr-2 h-4 w-4" />
+                        Características:
+                      </h4>
+                      <ul className="text-sm text-gray-100 space-y-2">
+                        {game.features.map((feature, idx) => (
+                          <li key={idx} className="flex items-center">
+                            <Star className="mr-2 h-3 w-3 text-yellow-400 flex-shrink-0" />
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    
+                    <div className="mt-6 bg-white text-black hover:bg-gray-100 py-3 rounded-lg flex items-center justify-center text-base font-medium transition-all duration-200 group-hover:scale-105">
                       <Play className="mr-2 h-4 w-4" />
                       Jugar Ahora
                     </div>
                   </CardContent>
-                </EnhancedCard>
+                </div>
               </Link>
-            </div>
-          ))}
-        </SimpleHorizontalScroll>
+            ))}
+          </div>
+        </div>
+      </section>
 
-        {/* Featured Animes Section */}
-        <section className="py-8 bg-gray-900/50 backdrop-blur-sm text-white">
-          <div className="container mx-auto px-4">
-            <RevealSection animation="fadeInUp" className="text-center mb-8">
-              <h2 className="text-2xl lg:text-3xl font-bold mb-3">
-                <TypewriterText text="Animes Destacados" speed={120} />
-              </h2>
-              <p className="text-gray-300 text-base">
-                Contenido de las series más populares y queridas
-              </p>
-            </RevealSection>
+      {/* CTA Section */}
+      <section className="py-16 bg-gradient-to-r from-purple-600 to-blue-600 relative">
+        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
+            ¿Listo para el Desafío?
+          </h2>
+          <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
+            Únete a miles de otakus que ya están poniendo a prueba su conocimiento de anime
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link 
+              href="/games/impostor"
+              className="bg-white text-gray-900 hover:bg-gray-100 px-8 py-4 text-lg font-bold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center"
+            >
+              <Trophy className="mr-2 h-5 w-5" />
+              Comenzar con Impostor
+            </Link>
             
-            <RevealSection animation="scaleIn" stagger={true}>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                {featuredAnimes.map((anime, index) => (
-                  <EnhancedCard
-                    key={index} 
-                    className="text-center p-4 bg-white/10 hover:bg-white/20 transition-all duration-300"
-                    floating={true}
-                  >
-                    <div className="text-3xl mb-2 animate-float">{anime.emoji}</div>
-                    <div className="text-xs font-medium">{anime.name}</div>
-                  </EnhancedCard>
-                ))}
-              </div>
-            </RevealSection>
+            <Link 
+              href="/games"
+              className="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4 text-lg font-bold rounded-xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center"
+            >
+              Ver Todos los Juegos
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
           </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="py-12 bg-gradient-to-r from-anime-electric to-anime-nature relative">
-          <div className="container mx-auto px-4 text-center relative z-10">
-            <RevealSection animation="fadeInUp">
-              <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
-                <TypewriterText text="¿Listo para el Desafío?" speed={100} />
-              </h2>
-              <p className="text-lg text-white/90 mb-6 max-w-2xl mx-auto">
-                Únete a miles de otakus que ya están poniendo a prueba su conocimiento de anime
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <EnhancedButton 
-                  magnetic={true}
-                  glowing={true}
-                  className="bg-white text-gray-900 hover:bg-gray-100 px-6 py-3 text-base rounded-lg transition-all duration-300"
-                >
-                  <Link href="/games/bingo" className="flex items-center">
-                    <Trophy className="mr-2 h-4 w-4" />
-                    Comenzar con Bingo
-                  </Link>
-                </EnhancedButton>
-                
-                <EnhancedButton 
-                  magnetic={true}
-                  className="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-6 py-3 text-base rounded-lg transition-all duration-300"
-                >
-                  <Link href="/games" className="flex items-center">
-                    Ver Todos los Juegos
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </EnhancedButton>
-              </div>
-            </RevealSection>
-          </div>
-        </section>
-      </div>
-    </EffectsProvider>
+        </div>
+      </section>
+    </div>
   );
 }
